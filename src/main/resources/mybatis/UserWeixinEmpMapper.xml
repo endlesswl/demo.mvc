@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.UserWeixinEmpDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.UserWeixinEmp">
+        <result property="id" column="id"/>
+        <result property="openid" column="openid"/>
+        <result property="empno" column="empno"/>
+        <result property="wxserverid" column="wxserverid"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,openid,empno,wxserverid,createtime,modifytime
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="UserWeixinEmp">
+		SELECT <include refid="columns" />
+		FROM tab_user_weixin_emp
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 根据条件查询微信信息 -->
+	<select id="findByOpenid" resultMap = "resultMap">
+	    SELECT <include refid="columns" />
+		FROM tab_user_weixin_emp
+		<where>
+			<if test="searchFields.openid != null and searchFields.openid != ''">
+				AND openid = #{searchFields.openid}
+			</if>
+	        <if test="searchFields.wxserverid != null and searchFields.wxserverid != ''">
+				AND wxserverid = #{searchFields.wxserverid}
+			</if>
+		</where>
+	</select>
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_user_weixin_emp
+		<where>
+	       <if test="openid != null and openid != ''">
+				AND openid = #{openid}
+		   </if>
+	       <if test="empno != null and empno != ''">
+				AND empno = #{empno}
+		   </if>
+	       <if test="wxserverid != null and wxserverid != ''">
+				AND wxserverid = #{wxserverid}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="modifytime != null and modifytime != ''">
+				AND modifytime = #{modifytime}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_user_weixin_emp
+		<where>
+	       <if test="searchFields.openid != null and searchFields.openid != ''">
+				AND openid = #{searchFields.openid}
+			</if>
+	       <if test="searchFields.empno != null and searchFields.empno != ''">
+				AND empno = #{searchFields.empno}
+			</if>
+	       <if test="searchFields.wxserverid != null and searchFields.wxserverid != ''">
+				AND wxserverid = #{searchFields.wxserverid}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+				AND modifytime = #{searchFields.modifytime}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="UserWeixinEmp" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_user_weixin_emp (
+        	openid,
+        	empno,
+        	wxserverid,
+        	createtime,
+        	modifytime
+		) VALUES (
+        	#{openid},
+        	#{empno},
+        	#{wxserverid},
+        	#{createtime},
+        	#{modifytime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_user_weixin_emp
+		<set>
+			openid = #{openid},
+			empno = #{empno},
+			wxserverid = #{wxserverid},
+			createtime = #{createtime},
+			modifytime = #{modifytime}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_user_weixin_emp WHERE id=#{id}
+	</delete>
+</mapper> 

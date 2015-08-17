@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.ProvincesDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Provinces">
+		<result property="id" column="id" />
+		<result property="province" column="province" />
+		<result property="provinceid" column="provinceid" />
+		<result property="count" column="count" />
+		<result property="phoneSegment" column="phoneSegment" />
+	</resultMap>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,province,provinceid,count
+	</sql>
+
+	<select id="search" resultMap="resultMap">
+		select * from tab_provinces tp ,tab_phone_area tpa where
+		tpa.provinceId=tp.id limit 10
+	</select>
+
+	<select id="get" parameterType="Long" resultType="Provinces">
+		SELECT
+		<include refid="columns" />
+		FROM tab_provinces
+		WHERE id=#{id}
+	</select>
+
+	<update id="updateUnkownCount">
+		update tab_provinces set count=#{count} where id=35
+	</update>
+
+	<!-- 更新 -->
+	<update id="updateCount">
+		UPDATE tab_provinces
+		<set>
+			count = count + 1
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+
+	<!-- 将全部省份的count更新为0 -->
+	<update id="updateAllCount">
+		UPDATE tab_provinces
+		<set>
+			count = 0
+		</set>
+	</update>
+
+	<select id="findCount" parameterType="map" resultMap="resultMap">
+		SELECT
+		<include refid="columns" />
+		FROM tab_provinces
+		order by count desc limit 5
+	</select>
+	<select id="searchAll" resultMap="resultMap">
+	    select * from tab_provinces
+	</select>
+</mapper> 

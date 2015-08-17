@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.WeixinConfigDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.WeixinConfig">
+		<result property="id" column="id" />
+		<result property="marketid" column="marketid" />
+		<result property="name" column="name" />
+		<result property="token" column="token" />
+		<result property="oauth" column="oauth" />
+		<result property="appid" column="appid" />
+		<result property="appsecret" column="appsecret" />
+		<result property="userInfoUrl" column="userInfoUrl" />
+		<result property="snsapiUserInfo" column="snsapiUserInfo" />
+		<result property="oauthHtml" column="oauthHtml" />
+		<result property="attentionUrl" column="attentionUrl" />
+		<result property="attentionUserInfoUrl" column="attentionUserInfoUrl" />
+		<result property="messageUrl" column="messageUrl" />
+		<result property="weixinMessage1" column="weixinMessage1" />
+		<result property="weixinMessage2" column="weixinMessage2" />
+		<result property="weixinMessage3" column="weixinMessage3" />
+		<result property="smsMessage1" column="smsMessage1" />
+		<result property="smsMessage2" column="smsMessage2" />
+		<result property="smsMessage3" column="smsMessage3" />
+		<result property="createtime" column="createtime" />
+		<result property="updatetime" column="updatetime" />
+	</resultMap>
+
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,marketid,name,token,oauth,appid,appsecret,userInfoUrl,snsapiUserInfo,oauthHtml,attentionUrl,attentionUserInfoUrl,messageUrl,
+		weixinMessage1,weixinMessage2,weixinMessage3,smsMessage1,smsMessage2,smsMessage3,createtime,updatetime
+	</sql>
+
+	<select id="get" resultType="WeixinConfig">
+	    SELECT
+		<include refid="columns" />
+		FROM tab_weixin_config where id=#{id}
+	</select>
+
+	<!-- 通过marektid获取微信配置 -->
+	<select id="searchByMarketid" resultType="WeixinConfig">
+		SELECT
+		<include refid="columns" />
+		FROM tab_weixin_config
+		<where>
+			<if test="marketid != null and marketid !=''">
+				marketid = #{marketid}
+			</if>
+		</where>
+		limit 1
+	</select>
+
+	<!-- 获取全部配置 -->
+	<select id="search" resultMap="resultMap">
+		select
+		<include refid="columns" />
+		from tab_weixin_config
+	</select>
+
+	<insert id="insert" parameterType="WeixinConfig" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_weixin_config (
+        	marketid,
+        	name,
+        	token,
+        	oauth,
+        	appid,
+        	appsecret,
+        	userInfoUrl,
+        	snsapiUserInfo,
+        	oauthHtml,
+        	attentionUrl,
+        	attentionUserInfoUrl,
+        	messageUrl,
+        	weixinMessage1,
+        	weixinMessage2,
+        	weixinMessage3,
+        	smsMessage1,
+        	smsMessage2,
+        	smsMessage3,
+        	createtime,
+        	updatetime
+		) VALUES (
+        	#{marketid},
+        	#{name},
+        	#{token},
+        	#{oauth},
+        	#{appid},
+        	#{appsecret},
+        	#{userInfoUrl},
+        	#{snsapiUserInfo},
+        	#{oauthHtml},
+        	#{attentionUrl},
+        	#{attentionUserInfoUrl},
+        	#{messageUrl},
+        	#{weixinMessage1},
+        	#{weixinMessage2},
+        	#{weixinMessage3},
+        	#{smsMessage1},
+        	#{smsMessage2},
+        	#{smsMessage3},
+        	#{createtime},
+        	#{updatetime}
+		)
+	</insert>
+	
+	<update id="update" >
+        UPDATE tab_weixin_config
+        <set>
+            <if test="marketid != null">
+                marketid = #{marketid},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="token != null">
+                token = #{token},
+            </if>
+            <if test="oauth != null">
+                oauth = #{oauth},
+            </if>
+            <if test="appid != null">
+                appid = #{appid},
+            </if>
+            <if test="appsecret != null">
+                appsecret = #{appsecret},
+            </if>
+            <if test="userInfoUrl != null">
+                userInfoUrl = #{userInfoUrl},
+            </if>
+            <if test="snsapiUserInfo != null">
+                snsapiUserInfo = #{snsapiUserInfo},
+            </if>
+            <if test="oauthHtml != null">
+                oauthHtml = #{oauthHtml},
+            </if>
+            <if test="attentionUrl != null">
+                attentionUrl = #{attentionUrl},
+            </if>
+            <if test="attentionUserInfoUrl != null">
+                attentionUserInfoUrl = #{attentionUserInfoUrl},
+            </if>
+            <if test="messageUrl != null">
+                messageUrl = #{messageUrl},
+            </if>
+            <if test="weixinMessage1 != null">
+                weixinMessage1 = #{weixinMessage1},
+            </if>
+            <if test="weixinMessage2 != null">
+                weixinMessage2 = #{weixinMessage2},
+            </if>
+            <if test="weixinMessage3 != null">
+                weixinMessage3 = #{weixinMessage3},
+            </if>
+            <if test="smsMessage1 != null">
+                smsMessage1 = #{smsMessage1},
+            </if>
+            <if test="smsMessage2 != null">
+                smsMessage2 = #{smsMessage2},
+            </if>
+            <if test="smsMessage3 != null">
+                smsMessage3 = #{smsMessage3},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="updatetime != null">
+                updatetime = #{updatetime},
+            </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_weixin_config WHERE 
+		id=#{id}
+	</delete>
+</mapper> 

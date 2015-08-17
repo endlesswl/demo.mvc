@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.UserGroupDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.UserGroup">
+        <result property="id" column="id"/>
+        <result property="marketid" column="marketid"/>
+        <result property="userid" column="userid"/>
+        <result property="groupName" column="groupName"/>
+        <result property="loserRule" column="loserRule"/>
+        <result property="groupType" column="groupType"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,marketid,userid,groupName,loserRule,groupType,createtime,modifytime
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="UserGroup">
+		SELECT <include refid="columns" />
+		FROM tab_user_group
+		WHERE id=#{id}
+	</select>
+	
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_user_group
+		<where>
+	       <if test="marketid != null">
+				AND marketid = #{marketid}
+		   </if>
+	       <if test="userid != null">
+				AND userid = #{userid}
+		   </if>
+	       <if test="groupName != null and groupName != ''">
+				AND groupName = #{groupName}
+		   </if>
+	       <if test="loserRule != null and loserRule != ''">
+				AND loserRule = #{loserRule}
+		   </if>
+	       <if test="groupType != null and groupType != ''">
+				AND groupType = #{groupType}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="modifytime != null and modifytime != ''">
+				AND modifytime = #{modifytime}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_user_group
+		<where>
+	       <if test="searchFields.marketid != null and searchFields.marketid != ''">
+				AND marketid = #{searchFields.marketid}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.groupName != null and searchFields.groupName != ''">
+				AND groupName = #{searchFields.groupName}
+			</if>
+	       <if test="searchFields.loserRule != null and searchFields.loserRule != ''">
+				AND loserRule = #{searchFields.loserRule}
+			</if>
+	       <if test="searchFields.groupType != null and searchFields.groupType != ''">
+				AND groupType = #{searchFields.groupType}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+				AND modifytime = #{searchFields.modifytime}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="UserGroup" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_user_group (
+        	marketid,
+        	userid,
+        	groupName,
+        	loserRule,
+        	groupType,
+        	createtime,
+        	modifytime
+		) VALUES (
+        	#{marketid},
+        	#{userid},
+        	#{groupName},
+        	#{loserRule},
+        	#{groupType},
+        	#{createtime},
+        	#{modifytime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_user_group
+		<set>
+			marketid = #{marketid},
+			userid = #{userid},
+			groupName = #{groupName},
+			loserRule = #{loserRule},
+			groupType = #{groupType},
+			createtime = #{createtime},
+			modifytime = #{modifytime}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_user_group WHERE id=#{id}
+	</delete>
+</mapper> 

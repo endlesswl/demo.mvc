@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.RechargeDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Recharge">
+        <result property="id" column="id"/>
+        <result property="subject" column="subject"/>
+        <result property="money" column="money"/>
+        <result property="fee" column="fee"/>
+        <result property="rate" column="rate"/>
+        <result property="actualMoney" column="actualMoney"/>
+        <result property="orderId" column="orderId"/>
+        <result property="tradeno" column="tradeno"/>
+        <result property="userId" column="userId"/>
+        <result property="channel" column="channel"/>
+        <result property="billtime" column="billtime"/>
+        <result property="billstatus" column="billstatus"/>
+        <result property="prebalance" column="prebalance"/>
+        <result property="ipaddr" column="ipaddr"/>
+        <result property="salt" column="salt"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+        <result property="expiretime" column="expiretime"/>
+        <result property="information" column="information"/>
+        <result property="confirmed" column="confirmed"/>
+        <result property="body" column="body"/>
+        <result property="orderType" column="orderType"/>
+        <result property="marketplanId" column="marketplanId"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,subject,money,fee,rate,actualMoney,orderId,tradeno,userId,channel,billtime,billstatus,prebalance,ipaddr,salt,createtime,modifytime,expiretime,information,confirmed,body,orderType,marketplanId
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Recharge">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		WHERE id=#{id}
+	</select>
+
+    <!-- 取得用户是否已领取礼金 -->
+    <select id="getByUserAndChannel" resultType="Recharge">
+        SELECT <include refid="columns" />
+        FROM tab_recharge
+        WHERE userid=#{userid} AND channel=#{channel} limit 1
+    </select>
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		<where>
+	       <if test="subject != null and subject != ''">
+				AND subject = #{subject}
+		   </if>
+	       <if test="money != null and money != ''">
+				AND money = #{money}
+		   </if>
+	       <if test="fee != null and fee != ''">
+				AND fee = #{fee}
+		   </if>
+	       <if test="rate != null and rate != ''">
+				AND rate = #{rate}
+		   </if>
+	       <if test="actualMoney != null and actualMoney != ''">
+				AND actualMoney = #{actualMoney}
+		   </if>
+	       <if test="orderId != null and orderId != ''">
+				AND orderId = #{orderId}
+		   </if>
+	      
+	       <if test="tradeno != null and tradeno != ''">
+				AND tradeno = #{tradeno}
+		   </if>
+	       <if test="userId != null">
+				AND userId = #{userId}
+		   </if>
+	       <if test="channel != null">
+				AND channel = #{channel}
+		   </if>
+	       <if test="billtime != null and billtime != ''">
+				AND billtime = #{billtime}
+		   </if>
+	       <if test="billstatus != null and billstatus != ''">
+				AND billstatus = #{billstatus}
+		   </if>
+	       <if test="prebalance != null and prebalance != ''">
+				AND prebalance = #{prebalance}
+		   </if>
+	       <if test="ipaddr != null and ipaddr != ''">
+				AND ipaddr = #{ipaddr}
+		   </if>
+	       <if test="salt != null and salt != ''">
+				AND salt = #{salt}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="modifytime != null and modifytime != ''">
+				AND modifytime = #{modifytime}
+		   </if>
+	       <if test="expiretime != null and expiretime != ''">
+				AND expiretime = #{expiretime}
+		   </if>
+	       <if test="information != null and information != ''">
+				AND information = #{information}
+		   </if>
+	       <if test="confirmed != null and confirmed != ''">
+				AND confirmed = #{confirmed}
+		   </if>
+	       <if test="body != null and body != ''">
+				AND body = #{body}
+		   </if>
+		    <if test="orderType != null">
+				AND orderType = #{orderType}
+		   </if>
+		    <if test="marketplanId != null and marketplanId != ''">
+				AND marketplanId = #{marketplanId}
+		   </if>
+		</where>
+		<if test="sortColumns != null and sortColumns != ''">
+			ORDER BY ${sortColumns}
+		</if>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		<where>
+	       <if test="searchFields.subject != null and searchFields.subject != ''">
+				AND subject = #{searchFields.subject}
+			</if>
+	       <if test="searchFields.money != null and searchFields.money != ''">
+				AND money = #{searchFields.money}
+			</if>
+	       <if test="searchFields.fee != null and searchFields.fee != ''">
+				AND fee = #{searchFields.fee}
+			</if>
+	       <if test="searchFields.rate != null and searchFields.rate != ''">
+				AND rate = #{searchFields.rate}
+			</if>
+	       <if test="searchFields.actualMoney != null and searchFields.actualMoney != ''">
+				AND actualMoney = #{searchFields.actualMoney}
+			</if>
+	       <if test="searchFields.orderId != null and searchFields.orderId != ''">
+				AND orderId = #{searchFields.orderId}
+			</if>
+	      
+	       <if test="searchFields.tradeno != null and searchFields.tradeno != ''">
+				AND tradeno = #{searchFields.tradeno}
+			</if>
+	       <if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
+			</if>
+	       <if test="searchFields.channel != null and searchFields.channel != ''">
+				AND channel = #{searchFields.channel}
+			</if>
+			
+	       <if test="searchFields.billtime != null and searchFields.billtime != ''">
+				AND billtime = #{searchFields.billtime}
+		   </if>
+	      
+	       <if test="searchFields.sbilltime != null and searchFields.sbilltime != ''">
+	       		<![CDATA[AND billtime  >= #{searchFields.sbilltime}]]>
+		   </if>
+	      <if test="searchFields.ebilltime != null and searchFields.ebilltime != ''">
+				<![CDATA[AND billtime  <= #{searchFields.ebilltime}]]>
+		   </if>
+	      
+	       <if test="searchFields.billstatus != null and searchFields.billstatus != ''">
+				AND billstatus = #{searchFields.billstatus}
+			</if>
+	       <if test="searchFields.prebalance != null and searchFields.prebalance != ''">
+				AND prebalance = #{searchFields.prebalance}
+			</if>
+	       <if test="searchFields.ipaddr != null and searchFields.ipaddr != ''">
+				AND ipaddr = #{searchFields.ipaddr}
+			</if>
+	       <if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+				AND modifytime = #{searchFields.modifytime}
+			</if>
+	       <if test="searchFields.expiretime != null and searchFields.expiretime != ''">
+				AND expiretime = #{searchFields.expiretime}
+			</if>
+	       <if test="searchFields.information != null and searchFields.information != ''">
+				AND information = #{searchFields.information}
+			</if>
+	       <if test="searchFields.confirmed != null and searchFields.confirmed != ''">
+				AND confirmed = #{searchFields.confirmed}
+			</if>
+	       <if test="searchFields.body != null and searchFields.body != ''">
+				AND body = #{searchFields.body}
+			</if>
+			 <if test="searchFields.orderType != null ">
+				AND orderType = #{searchFields.orderType}
+		   </if>
+		    <if test="searchFields.marketplanId != null and searchFields.marketplanId != ''">
+				AND marketplanId = #{searchFields.marketplanId}
+		   </if>
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+			ORDER BY ${searchFields.sortColumns}
+		</if>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Recharge" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_recharge (
+        	subject,
+        	money,
+        	fee,
+        	rate,
+        	actualMoney,
+        	orderId,
+        	tradeno,
+        	userId,
+        	channel,
+        	billtime,
+        	billstatus,
+        	prebalance,
+        	ipaddr,
+        	salt,
+        	createtime,
+        	modifytime,
+        	expiretime,
+        	information,
+        	confirmed,
+        	body,
+        	orderType,
+        	marketplanId
+		) VALUES (
+        	#{subject},
+        	#{money},
+        	#{fee},
+        	#{rate},
+        	#{actualMoney},
+        	#{orderId},
+        	#{tradeno},
+        	#{userId},
+        	#{channel},
+        	#{billtime},
+        	#{billstatus},
+        	#{prebalance},
+        	#{ipaddr},
+        	#{salt},
+        	#{createtime},
+        	#{modifytime},
+        	#{expiretime},
+        	#{information},
+        	#{confirmed},
+        	#{body},
+        	#{orderType},
+        	#{marketplanId}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_recharge
+		<set>
+			subject = #{subject},
+			money = #{money},
+			fee = #{fee},
+			rate = #{rate},
+			actualMoney = #{actualMoney},
+			orderId = #{orderId},
+			tradeno = #{tradeno},
+			userId = #{userId},
+			channel = #{channel},
+			billtime = #{billtime},
+			billstatus = #{billstatus},
+			prebalance = #{prebalance},
+			ipaddr = #{ipaddr},
+			salt = #{salt},
+			createtime = #{createtime},
+			modifytime = #{modifytime},
+			expiretime = #{expiretime},
+			information = #{information},
+			confirmed = #{confirmed},
+			body = #{body},
+			orderType = #{orderType},
+			marketplanId=#{marketplanId}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_recharge WHERE id=#{id}
+	</delete>
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="getRechargeByOrderId" parameterType="Long" resultType="Recharge">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		WHERE orderId = #{orderId} AND 1=1
+	</select>
+
+    <!-- 获取对象 -->
+	<select id="getRechargeByMarketId" parameterType="Long" resultType="Recharge">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		WHERE marketplanId = #{marketplanId} AND billstatus = 1
+	</select>
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="getRechargeByOrderIdAndUserId"  resultType="Recharge">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		WHERE orderId = #{orderId} AND userId=#{userId} AND 1=1
+	</select>
+	<!-- 查询num条没有确认的订单-->
+	<select id="findUnrecognizedOrder"  parameterType="int" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_recharge
+		WHERE confirmed = 0 AND 1=1 
+		limit #{num}
+	</select>
+
+    <!-- 按日期统计充值总额 -->
+	<select id="sumMoneyByDate"  parameterType="String" resultType="BigDecimal">
+		select sum(money) from tab_recharge
+        <where>
+            <if test="searchFields.startdate != null and searchFields.startdate != ''">
+                AND date(createtime) >= #{searchFields.startdate}
+            </if>
+            <if test="searchFields.enddate != null and searchFields.enddate != ''">
+                <![CDATA[AND date(createtime) <= #{searchFields.enddate}]]>
+            </if>
+            AND information like '{"sign%'
+        </where>
+	</select>
+
+    <!-- 按日期统计充值总额 -->
+    <select id="sumMoneyByUser" resultType="BigDecimal">
+        select sum(money) from tab_recharge
+        <where>
+            <if test="searchFields.channel != null">
+                AND channel = #{searchFields.channel}
+            </if>
+            <if test="searchFields.userId != null">
+                <![CDATA[AND userId = #{searchFields.userId}]]>
+            </if>
+            <if test="searchFields.billstatus != null">
+                <![CDATA[AND billstatus = #{searchFields.billstatus}]]>
+            </if>
+            <if test="searchFields.orderType != null">
+                <![CDATA[AND orderType = #{searchFields.orderType}]]>
+            </if>
+        </where>
+    </select>
+
+	<!-- 删除用户 -->
+	<delete id="deleteByMarketplanId" parameterType="Long">
+	     DELETE FROM tab_recharge WHERE marketplanId=#{marketplanId}
+	</delete>
+	 <!--充值金额统计 -->
+    <select id="statisUserRecharge" resultType="map">
+        SELECT sum(money) as totalMoney, count(1) as allCount
+        FROM tab_recharge
+        <where>
+             1=1 AND billstatus = 1 AND channel=1 
+            <if test="startDate != null and startDate != ''">
+                AND date(createtime) >= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                <![CDATA[AND date(createtime) <= #{endDate}]]>
+            </if>
+        </where>
+    </select>
+	
+</mapper> 

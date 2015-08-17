@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.ActivitiesCountDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.ActivitiesCount">
+        <result property="id" column="id"/>
+        <result property="marketid" column="marketid"/>
+        <result property="userid" column="userid"/>
+        <result property="username" column="username"/>
+        <result property="count" column="count"/>
+        <result property="createtime" column="createtime"/>
+        <result property="status" column="status"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,marketid,userid,username,count,createtime,status
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="ActivitiesCount">
+		SELECT <include refid="columns" />
+		FROM tab_activities_count
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_activities_count
+		<where>
+	       <if test="marketid != null and marketid != ''">
+				AND marketid = #{marketid}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+		   <if test="username != null and username != ''">
+				AND username = #{username}
+		   </if>
+	       <if test="count != null and count != ''">
+				AND count = #{count}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 从临时表中查询球王榜 -->
+	<select id="searchLenjoy" resultMap="resultMap">
+	    select * from (select * from tab_activities_count
+	    <where>
+	       <if test="searchFields.marketid != null and searchFields.marketid != ''">
+				AND marketid = #{searchFields.marketid}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+			<if test="searchFields.username != null and searchFields.username != ''">
+				AND username = #{searchFields.username}
+			</if>
+	       <if test="searchFields.count != null and searchFields.count != ''">
+				AND count = #{searchFields.count}
+			</if>
+	       <if test="searchFields.today != null and searchFields.today != ''">
+				AND date(createtime) = date(now())
+			</if>
+			<if test="searchFields.queryData != null and searchFields.queryData != ''">
+				AND date(createtime) = date(#{searchFields.queryData})
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+		</where>
+	    ORDER BY count desc) tmp
+		group by tmp.userid order by count desc
+	</select>
+	
+	<select id="searchByUserid" resultType="ActivitiesCount">
+	    select max(count) as count from tab_activities_count where userid=#{userid} and status=#{status} and marketid=#{marketid}
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_activities_count
+		<where>
+	       <if test="searchFields.marketid != null and searchFields.marketid != ''">
+				AND marketid = #{searchFields.marketid}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+			<if test="searchFields.username != null and searchFields.username != ''">
+				AND username = #{searchFields.username}
+			</if>
+	       <if test="searchFields.count != null and searchFields.count != ''">
+				AND count = #{searchFields.count}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+		</where>
+		order by count desc
+	</select>
+	
+	<!-- 更新 -->
+	<update id="updateByDate" >
+        UPDATE tab_activities_count
+		<set>
+			count = #{count}
+		</set>
+		where status =#{status} and date(createtime) = date(now())
+	</update>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="ActivitiesCount" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_activities_count (
+        	marketid,
+        	userid,
+        	username,
+        	count,
+        	createtime,
+        	status
+		) VALUES (
+        	#{marketid},
+        	#{userid},
+        	#{username},
+        	#{count},
+        	#{createtime},
+        	#{status}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_activities_count
+		<set>
+			count = #{count}
+		</set>
+		where status =#{status}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_activities_count WHERE id=#{id}
+	</delete>
+</mapper> 

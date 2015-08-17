@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.WithdrawDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Withdraw">
+        <result property="id" column="id"/>
+        <result property="userid" column="userid"/>
+        <result property="bankid" column="bankid"/>
+        <result property="orderid" column="orderid"/>
+        <result property="amount" column="amount"/>
+        <result property="createtime" column="createtime"/>
+        <result property="audittime" column="audittime"/>
+        <result property="operator" column="operator"/>
+        <result property="status" column="status"/>
+        <result property="source" column="source"/>
+        <result property="processtime" column="processtime"/>
+        <result property="remark" column="remark"/>
+        <result property="wxserverid" column="wxserverid"/>
+        <result property="serialNo" column="serialNo"/>
+        <result property="tradeNo" column="tradeNo"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,userid,bankid,orderid,amount,createtime,audittime,operator,status,processtime,remark,wxserverid
+		,serialNo,source,tradeNo
+	</sql>
+	
+	<!-- 获取对象: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Withdraw">
+		SELECT <include refid="columns" />
+		FROM tab_withdraw
+		WHERE id=#{id} AND deleteFlag = 0
+	</select>
+	
+	
+	<select id="findwithdrawList" parameterType="map" resultMap="resultMap">
+		SELECT a.*,b.bankname as bankname,b.cardno as cardno,b.accountname as accountname,c.realName as realName,c.cardNo as cardid
+		FROM tab_withdraw a,tab_bank b,tab_user c
+		<where>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+	       <if test="bankid != null and bankid != ''">
+				AND bankid = #{bankid}
+		   </if>
+           <if test="orderid != null and orderid != ''">
+				AND orderid = #{orderid}
+		   </if>
+	       <if test="amount != null and amount != ''">
+				AND amount = #{amount}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="audittime != null and audittime != ''">
+				AND audittime = #{audittime}
+		   </if>
+	       <if test="operator != null and operator != ''">
+				AND operator = #{operator}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+		   </if>
+	       <if test="processtime != null and processtime != ''">
+				AND processtime = #{processtime}
+		   </if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+		   </if>
+		   <if test="wxserverid != null and wxserverid != ''">
+				AND wxserverid = #{wxserverid}
+		   </if>
+             AND a.bankid = b.id AND a.userid = c.id AND a.deleteFlag = 0  
+		</where>
+		<if test="sortColumns != null and sortColumns != ''">
+			ORDER BY ${sortColumns}
+		</if>
+	</select>
+	
+	<!-- 查询列表, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT a.*,b.bankname as bankname,b.cardno as cardno,b.accountname as accountname,c.realName as realName,c.cardNo as cardid
+		FROM tab_withdraw a,tab_bank b,tab_user c
+		<where>
+	       <if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+		   </if>
+	       <if test="bankid != null and bankid != ''">
+				AND a.bankid = #{bankid}
+		   </if>
+           <if test="orderid != null and orderid != ''">
+				AND a.orderid = #{orderid}
+		   </if>
+	       <if test="amount != null and amount != ''">
+				AND a.amount = #{amount}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND a.createtime = #{createtime}
+		   </if>
+	       <if test="audittime != null and audittime != ''">
+				AND a.audittime = #{audittime}
+		   </if>
+	       <if test="operator != null and operator != ''">
+				AND a.operator = #{operator}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND a.status = #{status}
+		   </if>
+	       <if test="processtime != null and processtime != ''">
+				AND a.processtime = #{processtime}
+		   </if>
+	       <if test="remark != null and remark != ''">
+				AND a.remark = #{remark}
+		   </if>
+		    <if test="wxserverid == null and wxserverid == ''">
+				AND a.wxserverid is NUll
+		   </if>
+		   <if test="wxserverid != null and wxserverid != ''">
+				AND a.wxserverid = #{wxserverid}
+		   </if>
+             AND a.bankid = b.id AND a.userid = c.id AND a.deleteFlag = 0  
+		</where>
+		<if test="sortColumns != null and sortColumns != ''">
+			ORDER BY ${sortColumns}
+		</if>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT a.*,b.bankname as bankname,b.cardno as cardno,c.realName as realName,c.cardNo as cardid
+		FROM tab_withdraw a,tab_bank b,tab_user c
+		<where>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND a.userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.bankid != null and searchFields.bankid != ''">
+				AND a.bankid = #{searchFields.bankid}
+			</if>
+           <if test="searchFields.orderid != null and searchFields.orderid != ''">
+				AND a.orderid = #{searchFields.orderid}
+			</if>
+	       <if test="searchFields.amount != null and searchFields.amount != ''">
+				AND a.amount = #{searchFields.amount}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND a.createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.audittime != null and searchFields.audittime != ''">
+				AND a.audittime = #{searchFields.audittime}
+			</if>
+	       <if test="searchFields.operator != null and searchFields.operator != ''">
+				AND a.operator = #{searchFields.operator}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND a.status = #{searchFields.status}
+		   </if>
+	       <if test="searchFields.processtime != null and searchFields.processtime != ''">
+				AND a.processtime = #{searchFields.processtime}
+			</if>
+	       <if test="searchFields.remark != null and searchFields.remark != ''">
+				AND a.remark = #{searchFields.remark}
+			</if>
+            <if test="searchFields.starttime != null and searchFields.starttime != ''">
+				AND date(a.createtime) >= str_to_date(#{searchFields.starttime},'%Y-%m-%d')
+			</if>
+			 <if test="searchFields.wxserverid != null and searchFields.wxserverid != ''">
+				AND a.wxserverid = #{searchFields.wxserverid}
+			</if>
+			 <if test="searchFields.wxserverid == null or searchFields.wxserverid == ''">
+				AND a.wxserverid is NULL
+			</if>
+            <if test="searchFields.endtime != null and searchFields.endtime != ''">
+                <![CDATA[AND date(a.createtime) <= str_to_date(#{searchFields.endtime},'%Y-%m-%d')]]>
+			</if>
+            AND a.bankid = b.id AND a.userid = c.id AND a.deleteFlag = 0 
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+			ORDER BY ${searchFields.sortColumns}
+		</if>
+	</select>
+	
+	<select id="searchPageAndServerId" resultMap="resultMap">
+		SELECT a.*,b.bankname as bankname,b.cardno as cardno,b.accountname as accountname ,c.realName as realName,c.cardNo as cardid
+		FROM tab_withdraw a,tab_bank b,tab_user c
+		<where>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND a.userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.bankid != null and searchFields.bankid != ''">
+				AND a.bankid = #{searchFields.bankid}
+			</if>
+           <if test="searchFields.orderid != null and searchFields.orderid != ''">
+				AND a.orderid = #{searchFields.orderid}
+			</if>
+	       <if test="searchFields.amount != null and searchFields.amount != ''">
+				AND a.amount = #{searchFields.amount}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND a.createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.audittime != null and searchFields.audittime != ''">
+				AND a.audittime = #{searchFields.audittime}
+			</if>
+	       <if test="searchFields.operator != null and searchFields.operator != ''">
+				AND a.operator = #{searchFields.operator}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND a.status = #{searchFields.status}
+		   </if>
+	       <if test="searchFields.processtime != null and searchFields.processtime != ''">
+				AND a.processtime = #{searchFields.processtime}
+			</if>
+	       <if test="searchFields.remark != null and searchFields.remark != ''">
+				AND a.remark = #{searchFields.remark}
+			</if>
+			 <if test="searchFields.wxserverid!= null and searchFields.wxserverid != ''">
+				AND a.wxserverid = #{searchFields.wxserverid}
+			</if>
+            <if test="searchFields.starttime != null and searchFields.starttime != ''">
+				AND date(a.createtime) >= str_to_date(#{searchFields.starttime},'%Y-%m-%d')
+			</if>
+            <if test="searchFields.endtime != null and searchFields.endtime != ''">
+                <![CDATA[AND date(a.createtime) <= str_to_date(#{searchFields.endtime},'%Y-%m-%d')]]>
+			</if>
+            AND a.bankid = b.id AND a.userid = c.id AND a.deleteFlag = 0
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+			ORDER BY ${searchFields.sortColumns}
+		</if>
+	</select>
+	
+
+    <!-- 金额统计 -->
+    <select id="statisWithdraw" resultType="map">
+        SELECT sum(amount) as totalMoney,count(1) as allCount
+        FROM tab_withdraw
+        <where>
+            <if test="startDate != null and startDate != ''">
+                AND date(createtime) >= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                <![CDATA[AND date(createtime) <= #{endDate}]]>
+            </if>
+            AND status=1
+        </where>
+    </select>
+	
+	 <select id="findWithdrawByUserIdAndId" resultType="Withdraw">
+        SELECT a.*,b.bankname as bankname,b.cardno as cardno,c.realName as realName,c.cardNo as cardid
+		FROM tab_withdraw a,tab_bank b,tab_user c
+		where a.userid=#{userId}
+		AND a.id=#{id}
+		AND a.bankid=b.id
+		AND a.userid=b.userid
+		AND a.userid=c.id
+    </select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Withdraw" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_withdraw (
+        	userid,
+        	bankid,
+        	orderid,
+        	amount,
+        	createtime,
+        	audittime,
+        	operator,
+        	status,
+        	processtime,
+        	remark,
+        	wxserverid,
+        	serialNo,
+        	source,
+        	tradeNo
+		) VALUES (
+        	#{userid},
+        	#{bankid},
+        	#{orderid},
+        	#{amount},
+        	#{createtime},
+        	#{audittime},
+        	#{operator},
+        	#{status},
+        	#{processtime},
+        	#{remark},
+        	#{wxserverid},
+        	#{serialNo},
+        	#{source},
+        	#{tradeNo}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_withdraw
+		<set>
+			<if test="userid != null">
+			userid = #{userid},
+			</if>
+			<if test="bankid != null">
+			bankid = #{bankid},
+			</if>
+            <if test="orderid != null">
+            orderid = #{orderid},
+			</if>
+			<if test="amount != null">
+			amount = #{amount},
+			</if>
+			<if test="createtime != null">
+			createtime = #{createtime},
+			</if>
+			<if test="audittime != null">
+			audittime = #{audittime},
+			</if>
+			<if test="operator != null">
+			operator = #{operator},
+			</if>
+			<if test="status != null">
+			status = #{status},
+			</if>
+			<if test="processtime != null">
+			processtime = #{processtime},
+			</if>
+			<if test="remark != null">
+			remark = #{remark},
+			</if>
+			<if test="wxserverid != null">
+			wxserverid = #{wxserverid},
+			</if>
+			<if test="serialNo != null">
+			serialNo = #{serialNo},
+			</if>
+			<if test="tradeNo != null">
+			tradeNo = #{tradeNo}
+			</if>
+			
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<update id="delete" parameterType="Long">
+	     UPDATE tab_withdraw SET deleteFlag = 1 WHERE id=#{id}
+	</update>
+	
+	<!-- 根据id集合查询列表, 不分页 -->
+	<select id="searchByIds" parameterType="String" resultMap="resultMap">
+		SELECT 
+		a.*,
+		b.bankname as bankname,
+		b.cardno as cardno,
+		c.realName as realName,
+		c.cardNo as cardid
+		FROM tab_withdraw a,tab_bank b,tab_user c
+		WHERE
+		a.id in (#{idStr}) 
+		
+		AND a.bankid = b.id AND a.userid = c.id AND a.deleteFlag = 0
+    	
+	</select>
+	
+	<!-- 根据orderId查询 -->
+	<select id="findWithdrawByOrderId" parameterType="String"	resultType="Withdraw">
+		SELECT * FROM tab_withdraw 
+		WHERE orderid=#{orderid}
+	</select>
+	
+	<select id="findMinShengWithdrawByUserIdAndBankIdAndServerId" 
+		resultType="Withdraw">
+		SELECT *
+		FROM tab_withdraw
+	   <where>
+            <if test="bankid != null">
+                AND bankid = #{bankid}
+            </if>
+            <if test="amount != null  and endDate != ''">
+                AND amount = #{amount}
+            </if>
+            <if test="userid != null  and userid != ''">
+                AND userid = #{userid}
+            </if>
+            <if test="wxserverid != null  and wxserverid != ''">
+                AND wxserverid = #{wxserverid}
+            </if>
+             <if test="status != null  and status != ''">
+                AND status = #{status}
+            </if>
+        </where>
+		limit 1
+	</select>
+	
+	<select id="findByUserName" parameterType="String" resultMap="resultMap">
+		SELECT u.username,b.cardno ,b.bankname,u.cardNo as cardid,w.*
+		FROM tab_withdraw w 
+		INNER JOIN tab_user u ON u.id = w.userid
+		INNER JOIN tab_bank b ON b.id = w.bankid
+		WHERE u.username=#{username}
+	</select>
+	
+	<!-- 提现状态查询根据流水号 -->
+	<select id="findWithdrawStatus" parameterType="String" resultMap="resultMap">
+		SELECT t.*
+		FROM tab_withdraw t
+		WHERE t.wxserverid = #{channelId}
+		AND t.serialNo IN
+        <foreach item="item" index="index" collection="serialNos" open="(" separator="," close=")">
+              #{item}
+      	</foreach>
+	</select>
+
+	<!-- 查询待转账的 -->
+	<select id="findWithdraws" parameterType="String" resultMap="resultMap">
+		SELECT
+			a.*, b.bankname,
+			b.cardno,
+			b.accountname
+		FROM tab_withdraw a,tab_bank b
+		WHERE a.bankid = b.id
+		AND a.status = #{status}
+		AND a.amount > 1
+		AND b.accountname is not null
+		ORDER BY a.createtime
+		limit #{limitNum}
+	</select>
+		
+	<!-- 根据多个id更新 -->
+	<update id="updateWithdrawByIds" >
+		UPDATE tab_withdraw
+		<set>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="mesg != null">
+				remark = #{mesg}
+			</if>
+		</set>
+        WHERE 
+	       <![CDATA[ 
+	       	id IN (${ids})
+	        ]]>
+	</update>
+	
+	<!-- 根据渠道流水号查询 -->
+	<select id="findBySerialNo" parameterType="String" resultMap="resultMap">
+		SELECT t.* 
+		FROM tab_withdraw t
+		WHERE t.wxserverid=#{marketId}
+		and t.serialNo=#{serialNo}
+	</select>
+</mapper> 

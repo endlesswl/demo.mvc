@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.CompetitionDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Competition">
+        <result property="id" column="id"/>
+        <result property="matchid" column="matchid"/>
+        <result property="teamname" column="teamname"/>
+        <result property="cid" column="cid"/>
+        <result property="master" column="master"/>
+        <result property="starttime" column="starttime"/>
+        <result property="endtime" column="endtime"/>
+        <result property="matchtime" column="matchtime"/>
+        <result property="prizetime" column="prizetime"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,matchid,teamname,cid,master,starttime,endtime,prizetime,matchtime,createtime,modifytime,remark
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Competition">
+		SELECT <include refid="columns" />
+		FROM tab_competition
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 通过cid查询 -->
+	<select id="findByCid" resultType="Competition">
+	    SELECT <include refid="columns" />
+		FROM tab_competition
+		WHERE cid=#{cid} limit 1
+	</select>
+	<!-- 通过cid查询 另一方案  -->
+	<select id="findOtherCompetionByCid" resultType="Competition">
+	    SELECT <include refid="columns" />
+		 from  tab_competition  
+		 WHERE matchid in 
+		 (select matchid from tab_competition where cid=#{cid}) and cid !=#{cid}
+	</select>
+	
+	<select id="findListByCreateTime" resultMap="resultMap">
+	    SELECT <include refid="columns" />
+		FROM tab_competition
+		WHERE date(createtime)=date(#{date})
+	</select>
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_competition
+		<where>
+		   <if test="id != null and id != ''">
+				AND id = #{id}
+		   </if>
+	       <if test="matchid != null and matchid != ''">
+				AND matchid = #{matchid}
+		   </if>
+	       <if test="teamname != null and teamname != ''">
+				AND teamname = #{teamname}
+		   </if>
+	       <if test="cid != null and cid != ''">
+				AND cid = #{cid}
+		   </if>
+	       <if test="master != null and master != ''">
+				AND master = #{master}
+		   </if>
+	       <if test="starttime != null and starttime != ''">
+				AND date(starttime) = #{starttime}
+		   </if>
+	       <if test="endtime != null and endtime != ''">
+				AND endtime = #{endtime}
+		   </if>
+		    <if test="prizetime != null and prizetime != ''">
+				AND prizetime = #{prizetime}
+		   </if>
+		   
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="modifytime != null and modifytime != ''">
+				AND modifytime = #{modifytime}
+		   </if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_competition
+		<where>
+	       <if test="searchFields.matchid != null and searchFields.matchid != ''">
+				AND matchid = #{searchFields.matchid}
+			</if>
+	       <if test="searchFields.teamname != null and searchFields.teamname != ''">
+				AND teamname = #{searchFields.teamname}
+			</if>
+	       <if test="searchFields.cid != null and searchFields.cid != ''">
+				AND cid = #{searchFields.cid}
+			</if>
+	       <if test="searchFields.master != null and searchFields.master != ''">
+				AND master = #{searchFields.master}
+			</if>
+	       <if test="searchFields.starttime != null and searchFields.starttime != ''">
+				AND starttime = #{searchFields.starttime}
+			</if>
+	       <if test="searchFields.endtime != null and searchFields.endtime != ''">
+				AND endtime = #{searchFields.endtime}
+			</if>
+			<if test="searchFields.prizetime != null and searchFields.prizetime != ''">
+				AND prizetime = #{searchFields.prizetime}
+			</if>
+			 
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+				AND modifytime = #{searchFields.modifytime}
+			</if>
+	       <if test="searchFields.remark != null and searchFields.remark != ''">
+				AND remark = #{searchFields.remark}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Competition" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_competition (
+        	matchid,
+        	teamname,
+        	cid,
+        	master,
+        	starttime,
+        	endtime,
+        	matchtime,
+        	prizetime,
+        	createtime,
+        	modifytime,
+        	remark
+		) VALUES (
+        	#{matchid},
+        	#{teamname},
+        	#{cid},
+        	#{master},
+        	#{starttime},
+        	#{endtime},
+        	#{matchtime},
+        	#{prizetime},
+        	#{createtime},
+        	#{modifytime},
+        	#{remark}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_competition
+		<set>
+		    <if test="matchid != null and matchid != ''">
+		    	matchid = #{matchid},
+		    </if>
+		    <if test="teamname != null and teamname != ''">
+		    	teamname = #{teamname},
+		    </if>
+		    <if test="cid != null and cid != ''">
+		    	cid = #{cid},
+		    </if>
+		    <if test="master != null and master != ''">
+		    	master = #{master},
+		    </if>
+		    <if test="starttime != null and starttime != ''">
+		    	starttime = #{starttime},
+		    </if>
+		    <if test="endtime != null and endtime != ''">
+		    	endtime = #{endtime},
+		    </if>
+		    <if test="matchtime != null and matchtime != ''">
+		    	matchtime = #{matchtime},
+		    </if>
+		    <if test="prizetime != null and prizetime != ''">
+		    	prizetime = #{prizetime},
+		    </if>
+		    <if test="createtime != null and createtime != ''">
+		    	createtime = #{createtime},
+		    </if>
+		    <if test="modifytime != null and modifytime != ''">
+		    	modifytime = #{modifytime},
+		    </if>
+		    <if test="remark != null and remark != ''">
+		    	remark = #{remark},
+		    </if>
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_competition WHERE id=#{id}
+	</delete>
+</mapper> 

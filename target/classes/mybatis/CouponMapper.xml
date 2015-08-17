@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.CouponDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Coupon">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="userid" column="userid"/>
+        <result property="typeid" column="typeid"/>
+        <result property="code" column="code"/>
+        <result property="price" column="price"/>
+        <result property="balance" column="balance"/>
+        <result property="status" column="status"/>
+        <result property="usednumbers" column="usednumbers"/>
+        <result property="description" column="description"/>
+        <result property="createtime" column="createtime"/>
+        <result property="expiretime" column="expiretime"/>
+        <result property="usedtime" column="usedtime"/>
+        <result property="remark" column="remark"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,title,userid,typeid,code,price,balance,status,usednumbers,description,createtime,expiretime,usedtime,remark
+	</sql>
+	
+	<!-- 获取对象: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Coupon">
+		SELECT <include refid="columns" />
+		FROM tab_coupon
+		WHERE id=#{id}
+	</select>
+	
+
+	<!-- 查询列表, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_coupon
+		<where>
+	       <if test="title != null and title != ''">
+				AND title = #{title}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+	       <if test="typeid != null and typeid != ''">
+				AND typeid = #{typeid}
+		   </if>
+	       <if test="code != null and code != ''">
+				AND code = #{code}
+		   </if>
+	       <if test="price != null and price != ''">
+				AND price = #{price}
+		   </if>
+	       <if test="balance != null and balance != ''">
+				AND balance = #{balance}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+		   </if>
+	       <if test="usednumbers != null and usednumbers != ''">
+				AND usednumbers = #{usednumbers}
+		   </if>
+	       <if test="description != null and description != ''">
+				AND description = #{description}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="expiretime != null and expiretime != ''">
+				AND expiretime = #{expiretime}
+		   </if>
+	       <if test="usedtime != null and usedtime != ''">
+				AND usedtime = #{usedtime}
+		   </if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+		   </if>
+		</where>
+		<if test="sortColumns != null and sortColumns != ''">
+			ORDER BY ${sortColumns}
+		</if>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_coupon
+		<where>
+	       <if test="searchFields.title != null and searchFields.title != ''">
+				AND title = #{searchFields.title}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.typeid != null and searchFields.typeid != ''">
+				AND typeid = #{searchFields.typeid}
+			</if>
+	       <if test="searchFields.code != null and searchFields.code != ''">
+				AND code = #{searchFields.code}
+			</if>
+	       <if test="searchFields.price != null and searchFields.price != ''">
+				AND price = #{searchFields.price}
+			</if>
+	       <if test="searchFields.balance != null and searchFields.balance != ''">
+				AND balance = #{searchFields.balance}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.usednumbers != null and searchFields.usednumbers != ''">
+				AND usednumbers = #{searchFields.usednumbers}
+			</if>
+	       <if test="searchFields.description != null and searchFields.description != ''">
+				AND description = #{searchFields.description}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.expiretime != null and searchFields.expiretime != ''">
+				AND expiretime = #{searchFields.expiretime}
+			</if>
+	       <if test="searchFields.usedtime != null and searchFields.usedtime != ''">
+				AND usedtime = #{searchFields.usedtime}
+			</if>
+	       <if test="searchFields.remark != null and searchFields.remark != ''">
+				AND remark = #{searchFields.remark}
+			</if>
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+			ORDER BY ${searchFields.sortColumns}
+		</if>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Coupon" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_coupon (
+        	title,
+        	userid,
+        	typeid,
+        	code,
+        	price,
+        	balance,
+        	status,
+        	usednumbers,
+        	description,
+        	createtime,
+        	expiretime,
+        	usedtime,
+        	remark
+		) VALUES (
+        	#{title},
+        	#{userid},
+        	#{typeid},
+        	#{code},
+        	#{price},
+        	#{balance},
+        	#{status},
+        	#{usednumbers},
+        	#{description},
+        	#{createtime},
+        	#{expiretime},
+        	#{usedtime},
+        	#{remark}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_coupon
+		<set>
+			<if test="title != null">
+			title = #{title},
+			</if>
+			<if test="userid != null">
+			userid = #{userid},
+			</if>
+			<if test="typeid != null">
+			typeid = #{typeid},
+			</if>
+			<if test="code != null">
+			code = #{code},
+			</if>
+			<if test="price != null">
+			price = #{price},
+			</if>
+			<if test="balance != null">
+			balance = #{balance},
+			</if>
+			<if test="status != null">
+			status = #{status},
+			</if>
+			<if test="usednumbers != null">
+			usednumbers = #{usednumbers},
+			</if>
+			<if test="description != null">
+			description = #{description},
+			</if>
+			<if test="createtime != null">
+			createtime = #{createtime},
+			</if>
+			<if test="expiretime != null">
+			expiretime = #{expiretime},
+			</if>
+			<if test="usedtime != null">
+			usedtime = #{usedtime},
+			</if>
+			<if test="remark != null">
+			remark = #{remark}
+			</if>
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_coupon WHERE id=#{id}
+	</delete>
+	<!-- 根据用户和零彩id查询记录 -->
+	<select id="findCouponByIdAndUserId" resultType="Coupon">
+		SELECT <include refid="columns" />
+		FROM tab_coupon
+		<where>
+	       <if test="id != null and id != ''">
+				AND id = #{id}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+		</where>
+		
+	</select>
+</mapper> 

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.MarketRotateRuleDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.MarketRotateRule">
+        <result property="id" column="id"/>
+        <result property="customerId" column="customer_id"/>
+        <result property="rotateName" column="rotate_name"/>
+        <result property="rotateRule" column="rotate_rule"/>
+        <result property="beginTime" column="begin_time"/>
+        <result property="endTime" column="end_time"/>
+        <result property="createTime" column="create_time"/>
+        <result property="modifyTime" column="modify_time"/>
+        <result property="flag" column="flag"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,customer_id,rotate_name,rotate_rule,begin_time,end_time,create_time,modify_time,flag
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="MarketRotateRule">
+		SELECT <include refid="columns" />
+		FROM market_rotate_rule
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="getByName" parameterType="String" resultType="MarketRotateRule">
+		SELECT <include refid="columns" />
+		FROM market_rotate_rule
+		WHERE rotate_name=#{rotateName}
+	</select>
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM market_rotate_rule
+		<where>
+	       <if test="customerId != null and customerId != ''">
+				AND customer_id = #{customerId}
+		   </if>
+	       <if test="rotateName != null and rotateName != ''">
+				AND rotate_name = #{rotateName}
+		   </if>
+	       <if test="rotateRule != null and rotateRule != ''">
+				AND rotate_rule = #{rotateRule}
+		   </if>
+	       <if test="beginTime != null and beginTime != ''">
+				AND begin_time = #{beginTime}
+		   </if>
+	       <if test="endTime != null and endTime != ''">
+				AND end_time = #{endTime}
+		   </if>
+	       <if test="createTime != null and createTime != ''">
+				AND create_time = #{createTime}
+		   </if>
+	       <if test="modifyTime != null and modifyTime != ''">
+				AND modify_time = #{modifyTime}
+		   </if>
+	       <if test="flag != null and flag != ''">
+				AND flag = #{flag}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM market_rotate_rule
+		<where>
+	       <if test="searchFields.customerId != null and searchFields.customerId != ''">
+				AND customer_id = #{searchFields.customerId}
+			</if>
+	       <if test="searchFields.rotateName != null and searchFields.rotateName != ''">
+				AND rotate_name = #{searchFields.rotateName}
+			</if>
+	       <if test="searchFields.rotateRule != null and searchFields.rotateRule != ''">
+				AND rotate_rule = #{searchFields.rotateRule}
+			</if>
+	       <if test="searchFields.beginTime != null and searchFields.beginTime != ''">
+				AND begin_time = #{searchFields.beginTime}
+			</if>
+	       <if test="searchFields.endTime != null and searchFields.endTime != ''">
+				AND end_time = #{searchFields.endTime}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND create_time = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.modifyTime != null and searchFields.modifyTime != ''">
+				AND modify_time = #{searchFields.modifyTime}
+			</if>
+	       <if test="searchFields.flag != null and searchFields.flag != ''">
+				AND flag = #{searchFields.flag}
+			</if>
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            	ORDER BY ${searchFields.sortColumns}
+        </if>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="MarketRotateRule" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO market_rotate_rule (
+			id,
+        	customer_id,
+        	rotate_name,
+        	rotate_rule,
+        	begin_time,
+        	end_time,
+        	create_time,
+        	modify_time,
+        	flag
+		) VALUES (
+			UUID(),
+        	#{customerId},
+        	#{rotateName},
+        	#{rotateRule},
+        	#{beginTime},
+        	#{endTime},
+        	#{createTime},
+        	#{modifyTime},
+        	#{flag}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE market_rotate_rule
+		<set>
+			customer_id = #{customerId},
+			rotate_name = #{rotateName},
+			rotate_rule = #{rotateRule},
+			begin_time = #{beginTime},
+			end_time = #{endTime},
+			create_time = #{createTime},
+			modify_time = #{modifyTime},
+			flag = #{flag}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM market_rotate_rule WHERE id=#{id}
+	</delete>
+</mapper> 

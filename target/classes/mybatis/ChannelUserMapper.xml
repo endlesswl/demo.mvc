@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.ChannelUserDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.ChannelUser">
+        <result property="id" column="id"/>
+        <result property="channelid" column="channelid"/>
+        <result property="marketid" column="marketid"/>
+        <result property="orderid" column="orderid"/>
+        <result property="cuserid" column="cuserid"/>
+        <result property="name" column="name"/>
+        <result property="mobile" column="mobile"/>
+        <result property="cardtype" column="cardtype"/>
+        <result property="cardno" column="cardno"/>
+        <result property="openid" column="openid"/>
+        <result property="gameid" column="gameid"/>
+        <result property="rule" column="rule"/>
+        <result property="money" column="money"/>
+        <result property="userid" column="userid"/>
+        <result property="status" column="status"/>
+        <result property="starttime" column="starttime"/>
+        <result property="expiretime" column="expiretime"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,channelid,marketid,orderid,cuserid,name,mobile,cardtype,cardno,openid,gameid,rule,money,userid,status,starttime,expiretime,createtime,modifytime
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="ChannelUser">
+		SELECT <include refid="columns" />
+		FROM tab_channel_user
+		WHERE id=#{id}
+	</select>
+	
+	<!-- 查询渠道用户信息 -->
+	<select id="findChannelUser" resultMap = "resultMap">
+	    SELECT <include refid="columns" />
+		FROM tab_channel_user
+		<where>
+	       <if test="searchFields.cuserid != null and searchFields.cuserid != ''">
+				AND cuserid = #{searchFields.cuserid}
+		   </if>
+	       <if test="searchFields.mobile != null and searchFields.mobile != ''">
+				AND mobile = #{searchFields.mobile}
+		   </if>
+	       <if test="searchFields.gameid != null and searchFields.gameid != ''">
+				AND gameid = #{searchFields.gameid}
+		   </if>
+		   <if test="searchFields.channelid != null and searchFields.channelid != ''">
+				AND channelid = #{searchFields.channelid}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_channel_user
+		<where>
+	       <if test="orderid != null and orderid != ''">
+				AND orderid = #{orderid}
+		   </if>
+	       <if test="cuserid != null and cuserid != ''">
+				AND cuserid = #{cuserid}
+		   </if>
+	       <if test="name != null and name != ''">
+				AND name = #{name}
+		   </if>
+	       <if test="mobile != null and mobile != ''">
+				AND mobile = #{mobile}
+		   </if>
+	       <if test="cardtype != null and cardtype != ''">
+				AND cardtype = #{cardtype}
+		   </if>
+	       <if test="cardno != null and cardno != ''">
+				AND cardno = #{cardno}
+		   </if>
+	       <if test="openid != null and openid != ''">
+				AND openid = #{openid}
+		   </if>
+	       <if test="gameid != null and gameid != ''">
+				AND gameid = #{gameid}
+		   </if>
+	       <if test="rule != null and rule != ''">
+				AND rule = #{rule}
+		   </if>
+	       <if test="money != null and money != ''">
+				AND money = #{money}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+		   </if>
+	       <if test="starttime != null and starttime != ''">
+				AND starttime = #{starttime}
+		   </if>
+	       <if test="expiretime != null and expiretime != ''">
+				AND expiretime = #{expiretime}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="modifytime != null and modifytime != ''">
+				AND modifytime = #{modifytime}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_channel_user
+		<where>
+	       <if test="searchFields.orderid != null and searchFields.orderid != ''">
+				AND orderid = #{searchFields.orderid}
+			</if>
+	       <if test="searchFields.cuserid != null and searchFields.cuserid != ''">
+				AND cuserid = #{searchFields.cuserid}
+			</if>
+	       <if test="searchFields.name != null and searchFields.name != ''">
+				AND name = #{searchFields.name}
+			</if>
+	       <if test="searchFields.mobile != null and searchFields.mobile != ''">
+				AND mobile = #{searchFields.mobile}
+			</if>
+	       <if test="searchFields.cardtype != null and searchFields.cardtype != ''">
+				AND cardtype = #{searchFields.cardtype}
+			</if>
+	       <if test="searchFields.cardno != null and searchFields.cardno != ''">
+				AND cardno = #{searchFields.cardno}
+			</if>
+	       <if test="searchFields.openid != null and searchFields.openid != ''">
+				AND openid = #{searchFields.openid}
+			</if>
+	       <if test="searchFields.gameid != null and searchFields.gameid != ''">
+				AND gameid = #{searchFields.gameid}
+			</if>
+	       <if test="searchFields.rule != null and searchFields.rule != ''">
+				AND rule = #{searchFields.rule}
+			</if>
+	       <if test="searchFields.money != null and searchFields.money != ''">
+				AND money = #{searchFields.money}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.starttime != null and searchFields.starttime != ''">
+				AND starttime = #{searchFields.starttime}
+			</if>
+	       <if test="searchFields.expiretime != null and searchFields.expiretime != ''">
+				AND expiretime = #{searchFields.expiretime}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+				AND modifytime = #{searchFields.modifytime}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="ChannelUser" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_channel_user (
+        	orderid,
+        	cuserid,
+        	name,
+        	mobile,
+        	cardtype,
+        	cardno,
+        	openid,
+        	gameid,
+        	rule,
+        	money,
+        	userid,
+        	status,
+        	starttime,
+        	expiretime,
+        	createtime,
+        	modifytime
+		) VALUES (
+        	#{orderid},
+        	#{cuserid},
+        	#{name},
+        	#{mobile},
+        	#{cardtype},
+        	#{cardno},
+        	#{openid},
+        	#{gameid},
+        	#{rule},
+        	#{money},
+        	#{userid},
+        	#{status},
+        	#{starttime},
+        	#{expiretime},
+        	#{createtime},
+        	#{modifytime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_channel_user
+		<set>
+		    marketid = #{marketid},
+			orderid = #{orderid},
+			cuserid = #{cuserid},
+			name = #{name},
+			mobile = #{mobile},
+			cardtype = #{cardtype},
+			cardno = #{cardno},
+			openid = #{openid},
+			gameid = #{gameid},
+			rule = #{rule},
+			money = #{money},
+			userid = #{userid},
+			status = #{status},
+			starttime = #{starttime},
+			expiretime = #{expiretime},
+			createtime = #{createtime},
+			modifytime = #{modifytime}
+		</set>
+        WHERE 
+	        id = #{id} AND 
+	        channelid = #{channelid}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_channel_user WHERE id=#{id}
+	</delete>
+</mapper> 

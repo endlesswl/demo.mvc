@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.ArticleDao">
+
+    <resultMap id="resultMap" type="com.palm.lingcai.entity.Article">
+        <result property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="subtitle" column="subtitle"/>
+        <result property="source" column="source"/>
+        <result property="author" column="author"/>
+        <result property="digest" column="digest"/>
+        <result property="content" column="content"/>
+        <result property="link" column="link"/>
+        <result property="keyword" column="keyword"/>
+        <result property="channel" column="channel"/>
+        <result property="articletype" column="articletype"/>
+        <result property="picture" column="picture"/>
+        <result property="userid" column="userid"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		id,title,subtitle,source,author,digest,content,link,keyword,channel,articletype,picture,userid,createtime,modifytime
+	</sql>
+
+    <!-- 获取用户: 输出直接映射到对象 -->
+    <select id="get" parameterType="Long" resultType="Article">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_article
+        WHERE id=#{id}
+    </select>
+
+
+    <!-- 查询用户, 不分页 -->
+    <select id="search" parameterType="map" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_article
+        <where>
+            <if test="title != null and title != ''">
+                AND title = #{title}
+            </if>
+            <if test="subtitle != null and subtitle != ''">
+                AND subtitle = #{subtitle}
+            </if>
+            <if test="source != null and source != ''">
+                AND source = #{source}
+            </if>
+            <if test="author != null and author != ''">
+                AND author = #{author}
+            </if>
+            <if test="digest != null and digest != ''">
+                AND digest = #{digest}
+            </if>
+            <if test="content != null and content != ''">
+                AND content = #{content}
+            </if>
+            <if test="link != null and link != ''">
+                AND link = #{link}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND keyword = #{keyword}
+            </if>
+            <if test="channel != null and channel != ''">
+                AND channel = #{channel}
+            </if>
+            <if test="articletype != null and articletype != ''">
+                AND articletype = #{articletype}
+            </if>
+            <if test="picture != null and picture != ''">
+                AND picture = #{picture}
+            </if>
+            <if test="userid != null and userid != ''">
+                AND userid = #{userid}
+            </if>
+            <if test="createtime != null and createtime != ''">
+                AND createtime = #{createtime}
+            </if>
+            <if test="modifytime != null and modifytime != ''">
+                AND modifytime = #{modifytime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY ${searchFields.sortColumns}
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="searchPage" resultMap="resultMap">
+        SELECT a.*,b.username as username
+        FROM tab_article a left join tab_user b on a.userid = b.id
+        <where>
+            <if test="searchFields.title != null and searchFields.title != ''">
+                AND a.title = #{searchFields.title}
+            </if>
+            <if test="searchFields.subtitle != null and searchFields.subtitle != ''">
+                AND a.subtitle = #{searchFields.subtitle}
+            </if>
+            <if test="searchFields.source != null and searchFields.source != ''">
+                AND a.source = #{searchFields.source}
+            </if>
+            <if test="searchFields.author != null and searchFields.author != ''">
+                AND a.author = #{searchFields.author}
+            </if>
+            <if test="searchFields.digest != null and searchFields.digest != ''">
+                AND a.digest = #{searchFields.digest}
+            </if>
+            <if test="searchFields.content != null and searchFields.content != ''">
+                AND a.content = #{searchFields.content}
+            </if>
+            <if test="searchFields.link != null and searchFields.link != ''">
+                AND a.link = #{searchFields.link}
+            </if>
+            <if test="searchFields.keyword != null and searchFields.keyword != ''">
+                AND a.keyword = #{searchFields.keyword}
+            </if>
+            <if test="searchFields.channel != null and searchFields.channel != ''">
+                AND a.channel = #{searchFields.channel}
+            </if>
+            <if test="searchFields.articletype != null and searchFields.articletype != ''">
+                AND a.articletype = #{searchFields.articletype}
+            </if>
+            <if test="searchFields.picture != null and searchFields.picture != ''">
+                AND a.picture = #{searchFields.picture}
+            </if>
+            <if test="searchFields.userid != null and searchFields.userid != ''">
+                AND a.userid = #{searchFields.userid}
+            </if>
+            <if test="searchFields.createtime != null and searchFields.createtime != ''">
+                AND a.createtime = #{searchFields.createtime}
+            </if>
+            <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+                AND a.modifytime = #{searchFields.modifytime}
+            </if>
+           
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY ${searchFields.sortColumns}
+        </if>
+    </select>
+
+    <!-- 新增 -->
+    <insert id="insert" parameterType="Article" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_article (
+        	title,
+        	subtitle,
+        	source,
+        	author,
+        	digest,
+        	content,
+        	link,
+        	keyword,
+        	channel,
+        	articletype,
+        	picture,
+        	userid,
+        	createtime,
+        	modifytime
+		) VALUES (
+        	#{title},
+        	#{subtitle},
+        	#{source},
+        	#{author},
+        	#{digest},
+        	#{content},
+        	#{link},
+        	#{keyword},
+        	#{channel},
+        	#{articletype},
+        	#{picture},
+        	#{userid},
+        	#{createtime},
+        	#{modifytime}
+		)
+	</insert>
+
+    <!-- 更新 -->
+    <update id="update">
+        UPDATE tab_article
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="subtitle != null">
+                subtitle = #{subtitle},
+            </if>
+            <if test="source != null">
+                source = #{source},
+            </if>
+            <if test="author != null">
+                author = #{author},
+            </if>
+            <if test="digest != null">
+                digest = #{digest},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="link != null">
+                link = #{link},
+            </if>
+            <if test="keyword != null">
+                keyword = #{keyword},
+            </if>
+            <if test="channel != null">
+                channel = #{channel},
+            </if>
+            <if test="articletype != null">
+                articletype = #{articletype},
+            </if>
+            <if test="picture != null">
+                picture = #{picture},
+            </if>
+            <if test="userid != null">
+                userid = #{userid},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime},
+            </if>
+            <if test="modifytime != null">
+                modifytime = #{modifytime}
+            </if>
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="Long">
+	     DELETE FROM tab_article WHERE id=#{id}
+	</delete>
+</mapper> 

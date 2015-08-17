@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.ChannelRecordNotifyDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.ChannelRecordNotify">
+        <result property="id" column="id"/>
+        <result property="channelrecordid" column="channelrecordid"/>
+        <result property="notifyurl" column="notifyurl"/>
+        <result property="params" column="params"/>
+        <result property="response" column="response"/>
+        <result property="notifytime" column="notifytime"/>
+        <result property="createtime" column="createtime"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,channelrecordid,notifyurl,params,response,notifytime,createtime
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="ChannelRecordNotify">
+		SELECT <include refid="columns" />
+		FROM tab_channel_record_notify
+		WHERE id=#{id}
+	</select>
+	
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_channel_record_notify
+		<where>
+	       <if test="channelrecordid != null and channelrecordid != ''">
+				AND channelrecordid = #{channelrecordid}
+		   </if>
+	       <if test="notifyurl != null and notifyurl != ''">
+				AND notifyurl = #{notifyurl}
+		   </if>
+	       <if test="params != null and params != ''">
+				AND params = #{params}
+		   </if>
+	       <if test="response != null and response != ''">
+				AND response = #{response}
+		   </if>
+	       <if test="notifytime != null and notifytime != ''">
+				AND notifytime = #{notifytime}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_channel_record_notify
+		<where>
+	       <if test="searchFields.channelrecordid != null and searchFields.channelrecordid != ''">
+				AND channelrecordid = #{searchFields.channelrecordid}
+			</if>
+	       <if test="searchFields.notifyurl != null and searchFields.notifyurl != ''">
+				AND notifyurl = #{searchFields.notifyurl}
+			</if>
+	       <if test="searchFields.params != null and searchFields.params != ''">
+				AND params = #{searchFields.params}
+			</if>
+	       <if test="searchFields.response != null and searchFields.response != ''">
+				AND response = #{searchFields.response}
+			</if>
+	       <if test="searchFields.notifytime != null and searchFields.notifytime != ''">
+				AND notifytime = #{searchFields.notifytime}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="ChannelRecordNotify" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_channel_record_notify (
+        	channelrecordid,
+        	notifyurl,
+        	params,
+        	response,
+        	notifytime,
+        	createtime
+		) VALUES (
+        	#{channelrecordid},
+        	#{notifyurl},
+        	#{params},
+        	#{response},
+        	#{notifytime},
+        	#{createtime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_channel_record_notify
+		<set>
+			channelrecordid = #{channelrecordid},
+			notifyurl = #{notifyurl},
+			params = #{params},
+			response = #{response},
+			notifytime = #{notifytime},
+			createtime = #{createtime}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_channel_record_notify WHERE id=#{id}
+	</delete>
+</mapper> 

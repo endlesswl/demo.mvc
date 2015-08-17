@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.QoptionDao">
+
+    <resultMap id="resultMap" type="com.palm.lingcai.entity.Qoption">
+        <result property="id" column="id"/>
+        <result property="questionId" column="questionId"/>
+        <result property="optionName" column="optionName"/>
+        <result property="subTitle" column="subTitle"/>
+        <result property="optionDesc" column="optionDesc"/>
+        <result property="sortId" column="sortId"/>
+        <result property="createTime" column="createTime"/>
+        <result property="modifyTime" column="modifyTime"/>
+        <!-- 多对一关联映射 -->
+        <!-- property:类中的属性名，javaType：属性名所对应的类型 -->
+        <association property="question" javaType="Question">
+            <result property="marketId" column="marketId"/>
+            <result property="sortId" column="sortId"/>
+            <result property="title" column="title"/>
+            <result property="subTitle" column="subTitle"/>
+            <result property="questionDesc" column="questionDesc"/>
+            <result property="questionType" column="questionType"/>
+            <result property="rightTips" column="rightTips"/>
+            <result property="wrongTips" column="wrongTips"/>
+            <result property="answer" column="answer"/>
+            <result property="createTime" column="createTime"/>
+            <result property="modifyTime" column="modifyTime"/>
+        </association>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		id,questionId,optionName,subTitle,optionDesc,sortId,createTime,modifyTime
+	</sql>
+
+    <!-- 获取用户: 输出直接映射到对象 -->
+    <select id="get" parameterType="Long" resultType="Qoption">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_qoption
+        WHERE id=#{id}
+    </select>
+
+
+    <!-- 查询用户, 不分页 -->
+    <select id="search" parameterType="map" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_qoption
+        <where>
+            <if test="questionId != null and questionId != ''">
+                AND questionId = #{questionId}
+            </if>
+            <if test="optionName != null and optionName != ''">
+                AND optionName = #{optionName}
+            </if>
+            <if test="subTitle != null and subTitle != ''">
+                AND subTitle = #{subTitle}
+            </if>
+            <if test="optionDesc != null and optionDesc != ''">
+                AND optionDesc = #{optionDesc}
+            </if>
+            <if test="sortId != null and sortId != ''">
+                AND sortId = #{sortId}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND createTime = #{createTime}
+            </if>
+            <if test="modifyTime != null and modifyTime != ''">
+                AND modifyTime = #{modifyTime}
+            </if>
+        </where>
+        <if test="sortColumns != null and sortColumns != ''">
+            ORDER BY ${sortColumns}
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="searchPage" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_qoption
+        <where>
+            <if test="searchFields.questionId != null and searchFields.questionId != ''">
+                AND questionId = #{searchFields.questionId}
+            </if>
+            <if test="searchFields.optionName != null and searchFields.optionName != ''">
+                AND optionName = #{searchFields.optionName}
+            </if>
+            <if test="searchFields.subTitle != null and searchFields.subTitle != ''">
+                AND subTitle = #{searchFields.subTitle}
+            </if>
+            <if test="searchFields.optionDesc != null and searchFields.optionDesc != ''">
+                AND optionDesc = #{searchFields.optionDesc}
+            </if>
+            <if test="searchFields.sortId != null and searchFields.sortId != ''">
+                AND sortId = #{searchFields.sortId}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.modifyTime != null and searchFields.modifyTime != ''">
+                AND modifyTime = #{searchFields.modifyTime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY ${searchFields.sortColumns}
+        </if>
+    </select>
+
+    <!-- 新增 -->
+    <insert id="insert" parameterType="Qoption" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_qoption (
+        	questionId,
+        	optionName,
+        	subTitle,
+        	optionDesc,
+        	sortId,
+        	createTime,
+        	modifyTime
+		) VALUES (
+        	#{questionId},
+        	#{optionName},
+        	#{subTitle},
+        	#{optionDesc},
+        	#{sortId},
+        	#{createTime},
+        	#{modifyTime}
+		)
+	</insert>
+
+    <!-- 更新 -->
+    <update id="update">
+        UPDATE tab_qoption
+        <set>
+            questionId = #{questionId},
+            optionName = #{optionName},
+            subTitle = #{subTitle},
+            optionDesc = #{optionDesc},
+            sortId = #{sortId},
+            modifyTime = #{modifyTime}
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="Long">
+	     DELETE FROM tab_qoption WHERE id=#{id}
+	</delete>
+
+    <!--  查询计划问题选项的最大序号 -->
+    <select id="findMaxSortByQuestionId" parameterType="Long" resultType="Qoption">
+        select
+        <include refid="columns"/>
+        from tab_qoption
+        where questionId = #{questionId} and 1=1
+        order by sortId desc limit 1
+    </select>
+    <!--
+
+     -->
+
+    <!-- 分页查询 当前用户创建问题选项-->
+    <select id="searchQoptionsPageByUser" resultMap="resultMap">
+        SELECT qop.id,qop.questionId,qop.optionName,qop.subTitle,qop.optionDesc,qop.sortId,qop.createTime,qop.modifyTime
+        FROM tab_qoption qop , tab_marketplan m ,tab_question q
+        <where>
+            AND m.userId=#{userId}
+            AND m.id=q.marketId
+            AND q.id=qop.questionId
+            <if test="searchFields.marketId != null and searchFields.marketId != ''">
+                AND q.marketId = #{searchFields.marketId}
+            </if>
+            <if test="searchFields.questionId != null and searchFields.questionId != ''">
+                AND qop.questionId = #{searchFields.questionId}
+            </if>
+            <if test="searchFields.optionName != null and searchFields.optionName != ''">
+                AND qop.optionName = #{searchFields.optionName}
+            </if>
+            <if test="searchFields.subTitle != null and searchFields.subTitle != ''">
+                AND qop.subTitle = #{searchFields.subTitle}
+            </if>
+            <if test="searchFields.optionDesc != null and searchFields.optionDesc != ''">
+                AND qop.optionDesc = #{searchFields.optionDesc}
+            </if>
+            <if test="searchFields.sortId != null and searchFields.sortId != ''">
+                AND qop.sortId = #{searchFields.sortId}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND qop.createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.modifyTime != null and searchFields.modifyTime != ''">
+                AND qop.modifyTime = #{searchFields.modifyTime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY qop.${searchFields.sortColumns}
+        </if>
+    </select>
+    
+     <!-- 删除用户 -->
+    <delete id="deleteByQid" parameterType="Long">
+	     DELETE FROM tab_qoption WHERE questionId=#{questionId}
+	</delete>
+    
+</mapper> 

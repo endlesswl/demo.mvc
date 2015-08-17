@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.PushMsgDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.PushMsg">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="userId" column="userId"/>
+        <result property="userType" column="userType"/>
+        <result property="createTime" column="createTime"/>
+        <result property="modifyTime" column="modifyTime"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,content,userId,userType,createTime,modifyTime
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="PushMsg">
+		SELECT <include refid="columns" />
+		FROM tab_push_msg
+		WHERE id=#{id}
+	</select>
+	
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_push_msg
+		<where>
+	       <if test="userId != null and userId != ''">
+				AND userId = #{userId}
+		   </if>
+	       <if test="userType != null and userType != ''">
+				AND userType = #{userType}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_push_msg
+		<where>
+	       <if test="searchFields.userId != null and searchFields.userId != ''">
+				AND userId = #{searchFields.userId}
+			</if>
+	       <if test="searchFields.userType != null and searchFields.userType != ''">
+				AND userType = #{searchFields.userType}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 内容检索 -->
+	<select id="searchBlur" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_push_msg
+		<where>
+	       <if test="content != null and content != ''">
+				AND content like CONCAT('%', #{content}, '%')
+			</if>
+	       <if test="userId != null and userId != ''">
+				AND userId = #{userId}
+			</if>
+	       <if test="userType != null and userType != ''">
+				AND userType = #{userType}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 消息推送滚动列表 -->
+	<select id="searchScrollList"  parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_push_msg
+		<where>
+		   <![CDATA[
+	        	AND (userId is null
+	       ]]>
+	       <if test="userId != null and userId != ''">
+				or userId = #{userId}
+		   </if>
+		   <![CDATA[
+	        	)
+	       ]]>
+	       <![CDATA[
+	        	AND (userType is null
+	       ]]>
+	       <if test="userType != null and userType != ''">
+				or userType = #{userType}
+		   </if>
+		   <![CDATA[
+	        	)
+	       ]]>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="PushMsg" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_push_msg (
+        	content,
+        	userId,
+        	userType,
+        	createTime,
+        	modifyTime
+		) VALUES (
+        	#{content},
+        	#{userId},
+        	#{userType},
+        	#{createTime},
+        	#{modifyTime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_push_msg
+		<set>
+			content = #{content},
+			userId = #{userId},
+			userType = #{userType},
+			createTime = #{createTime},
+			modifyTime = #{modifyTime}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_push_msg WHERE id=#{id}
+	</delete>
+</mapper> 

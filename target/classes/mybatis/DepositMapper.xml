@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.DepositDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Deposit">
+        <result property="id" column="id"/>
+        <result property="subject" column="subject"/>
+        <result property="money" column="money"/>
+        <result property="fee" column="fee"/>
+        <result property="rate" column="rate"/>
+        <result property="actualMoney" column="actualMoney"/>
+        <result property="orderid" column="orderid"/>
+        <result property="tradeno" column="tradeno"/>
+        <result property="method" column="method"/>
+        <result property="methodExt" column="methodExt"/>
+        <result property="status" column="status"/>
+        <result property="prebalance" column="prebalance"/>
+        <result property="ipaddr" column="ipaddr"/>
+        <result property="salt" column="salt"/>
+        <result property="createtime" column="createtime"/>
+        <result property="modifytime" column="modifytime"/>
+        <result property="expiretime" column="expiretime"/>
+        <result property="fixedtime" column="fixedtime"/>
+        <result property="information" column="information"/>
+        <result property="confirmed" column="confirmed"/>
+        <result property="remark" column="remark"/>
+        <result property="userid" column="userid"/>
+        <result property="deleteFlag" column="deleteFlag"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,subject,money,fee,rate,actualMoney,orderid,tradeno,method,methodExt,status,prebalance,ipaddr,salt,createtime,modifytime,expiretime,fixedtime,information,confirmed,remark,userid,deleteFlag
+	</sql>
+	
+	<!-- 获取对象: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Deposit">
+		SELECT <include refid="columns" />
+		FROM tab_deposit
+		WHERE id=#{id}
+	</select>
+	
+	 <!-- 按日期统计充值总额 -->
+    <select id="sumMoneyByUser" resultType="BigDecimal">
+        select sum(money) from tab_deposit
+        <where>
+           
+            <if test="searchFields.userId != null">
+                <![CDATA[AND userId = #{searchFields.userId}]]>
+            </if>
+            <if test="searchFields.billstatus != null">
+                <![CDATA[AND status = #{searchFields.billstatus}]]>
+            </if>
+            
+        </where>
+    </select>
+    
+    <!-- 按日期统计充值总额 -->
+	<select id="sumMoneyByDate"  parameterType="String" resultType="BigDecimal">
+		select sum(money) from tab_deposit
+        <where>
+            <if test="searchFields.startdate != null and searchFields.startdate != ''">
+                AND date(createtime) >= #{searchFields.startdate}
+            </if>
+            <if test="searchFields.enddate != null and searchFields.enddate != ''">
+                <![CDATA[AND date(createtime) <= #{searchFields.enddate}]]>
+            </if>
+            AND information like '{"sign%'
+        </where>
+	</select>
+	<!-- 查询列表, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_deposit
+		<where>
+	       <if test="subject != null and subject != ''">
+				AND subject = #{subject}
+		   </if>
+	       <if test="money != null and money != ''">
+				AND money = #{money}
+		   </if>
+	       <if test="fee != null and fee != ''">
+				AND fee = #{fee}
+		   </if>
+	       <if test="rate != null and rate != ''">
+				AND rate = #{rate}
+		   </if>
+	       <if test="actualMoney != null and actualMoney != ''">
+				AND actualMoney = #{actualMoney}
+		   </if>
+	       <if test="orderid != null and orderid != ''">
+				AND orderid = #{orderid}
+		   </if>
+	       <if test="tradeno != null and tradeno != ''">
+				AND tradeno = #{tradeno}
+		   </if>
+	       <if test="method != null and method != ''">
+				AND method = #{method}
+		   </if>
+	       <if test="methodExt != null and methodExt != ''">
+				AND methodExt = #{methodExt}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+		   </if>
+	       <if test="prebalance != null and prebalance != ''">
+				AND prebalance = #{prebalance}
+		   </if>
+	       <if test="ipaddr != null and ipaddr != ''">
+				AND ipaddr = #{ipaddr}
+		   </if>
+	       <if test="salt != null and salt != ''">
+				AND salt = #{salt}
+		   </if>
+	       <if test="createtime != null and createtime != ''">
+				AND createtime = #{createtime}
+		   </if>
+	       <if test="modifytime != null and modifytime != ''">
+				AND modifytime = #{modifytime}
+		   </if>
+	       <if test="expiretime != null and expiretime != ''">
+				AND expiretime = #{expiretime}
+		   </if>
+	       <if test="fixedtime != null and fixedtime != ''">
+				AND fixedtime = #{fixedtime}
+		   </if>
+	       <if test="information != null and information != ''">
+				AND information = #{information}
+		   </if>
+	       <if test="confirmed != null and confirmed != ''">
+				AND confirmed = #{confirmed}
+		   </if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+	       <if test="deleteFlag != null and deleteFlag != ''">
+				AND deleteFlag = #{deleteFlag}
+		   </if>
+		</where>
+		<if test="sortColumns != null and sortColumns != ''">
+			ORDER BY ${sortColumns}
+		</if>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_deposit
+		<where>
+	       <if test="searchFields.subject != null and searchFields.subject != ''">
+				AND subject = #{searchFields.subject}
+			</if>
+	       <if test="searchFields.money != null and searchFields.money != ''">
+				AND money = #{searchFields.money}
+			</if>
+	       <if test="searchFields.fee != null and searchFields.fee != ''">
+				AND fee = #{searchFields.fee}
+			</if>
+	       <if test="searchFields.rate != null and searchFields.rate != ''">
+				AND rate = #{searchFields.rate}
+			</if>
+	       <if test="searchFields.actualMoney != null and searchFields.actualMoney != ''">
+				AND actualMoney = #{searchFields.actualMoney}
+			</if>
+	       <if test="searchFields.orderid != null and searchFields.orderid != ''">
+				AND orderid = #{searchFields.orderid}
+			</if>
+	       <if test="searchFields.tradeno != null and searchFields.tradeno != ''">
+				AND tradeno = #{searchFields.tradeno}
+			</if>
+	       <if test="searchFields.method != null and searchFields.method != ''">
+				AND method = #{searchFields.method}
+			</if>
+	       <if test="searchFields.methodExt != null and searchFields.methodExt != ''">
+				AND methodExt = #{searchFields.methodExt}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+	       <if test="searchFields.prebalance != null and searchFields.prebalance != ''">
+				AND prebalance = #{searchFields.prebalance}
+			</if>
+	       <if test="searchFields.ipaddr != null and searchFields.ipaddr != ''">
+				AND ipaddr = #{searchFields.ipaddr}
+			</if>
+	       <if test="searchFields.salt != null and searchFields.salt != ''">
+				AND salt = #{searchFields.salt}
+			</if>
+	       <if test="searchFields.createtime != null and searchFields.createtime != ''">
+				AND createtime = #{searchFields.createtime}
+			</if>
+	       <if test="searchFields.modifytime != null and searchFields.modifytime != ''">
+				AND modifytime = #{searchFields.modifytime}
+			</if>
+	       <if test="searchFields.expiretime != null and searchFields.expiretime != ''">
+				AND expiretime = #{searchFields.expiretime}
+			</if>
+	       <if test="searchFields.fixedtime != null and searchFields.fixedtime != ''">
+				AND fixedtime = #{searchFields.fixedtime}
+			</if>
+	       <if test="searchFields.information != null and searchFields.information != ''">
+				AND information = #{searchFields.information}
+			</if>
+	       <if test="searchFields.confirmed != null and searchFields.confirmed != ''">
+				AND confirmed = #{searchFields.confirmed}
+			</if>
+	       <if test="searchFields.remark != null and searchFields.remark != ''">
+				AND remark = #{searchFields.remark}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.deleteFlag != null and searchFields.deleteFlag != ''">
+				AND deleteFlag = #{searchFields.deleteFlag}
+		   </if>
+			
+		  <if test="searchFields.sbilltime != null and searchFields.sbilltime != ''">
+	       		<![CDATA[AND createtime  >= #{searchFields.sbilltime}]]>
+		  </if>
+	      <if test="searchFields.ebilltime != null and searchFields.ebilltime != ''">
+				<![CDATA[AND createtime  <= #{searchFields.ebilltime}]]>
+		  </if>
+			
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+			ORDER BY ${searchFields.sortColumns}
+		</if>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Deposit" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_deposit (
+        	subject,
+        	money,
+        	fee,
+        	rate,
+        	actualMoney,
+        	orderid,
+        	tradeno,
+        	method,
+        	methodExt,
+        	status,
+        	prebalance,
+        	ipaddr,
+        	salt,
+        	createtime,
+        	modifytime,
+        	expiretime,
+        	fixedtime,
+        	information,
+        	confirmed,
+        	remark,
+        	userid,
+        	deleteFlag
+		) VALUES (
+        	#{subject},
+        	#{money},
+        	#{fee},
+        	#{rate},
+        	#{actualMoney},
+        	#{orderid},
+        	#{tradeno},
+        	#{method},
+        	#{methodExt},
+        	#{status},
+        	#{prebalance},
+        	#{ipaddr},
+        	#{salt},
+        	#{createtime},
+        	#{modifytime},
+        	#{expiretime},
+        	#{fixedtime},
+        	#{information},
+        	#{confirmed},
+        	#{remark},
+        	#{userid},
+        	#{deleteFlag}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_deposit
+		<set>
+			<if test="subject != null">
+			subject = #{subject},
+			</if>
+			<if test="money != null">
+			money = #{money},
+			</if>
+			<if test="fee != null">
+			fee = #{fee},
+			</if>
+			<if test="rate != null">
+			rate = #{rate},
+			</if>
+			<if test="actualMoney != null">
+			actualMoney = #{actualMoney},
+			</if>
+			<if test="orderid != null">
+			orderid = #{orderid},
+			</if>
+			<if test="tradeno != null">
+			tradeno = #{tradeno},
+			</if>
+			<if test="method != null">
+			method = #{method},
+			</if>
+			<if test="methodExt != null">
+			methodExt = #{methodExt},
+			</if>
+			<if test="status != null">
+			status = #{status},
+			</if>
+			<if test="prebalance != null">
+			prebalance = #{prebalance},
+			</if>
+			<if test="ipaddr != null">
+			ipaddr = #{ipaddr},
+			</if>
+			<if test="salt != null">
+			salt = #{salt},
+			</if>
+			<if test="createtime != null">
+			createtime = #{createtime},
+			</if>
+			<if test="modifytime != null">
+			modifytime = #{modifytime},
+			</if>
+			<if test="expiretime != null">
+			expiretime = #{expiretime},
+			</if>
+			<if test="fixedtime != null">
+			fixedtime = #{fixedtime},
+			</if>
+			<if test="information != null">
+			information = #{information},
+			</if>
+			<if test="confirmed != null">
+			confirmed = #{confirmed},
+			</if>
+			<if test="remark != null">
+			remark = #{remark},
+			</if>
+			<if test="userid != null">
+			userid = #{userid},
+			</if>
+			<if test="deleteFlag != null">
+			deleteFlag = #{deleteFlag}
+			</if>
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_deposit WHERE id=#{id}
+	</delete>
+	<!-- 查询充值记录根据订单号和用户id -->
+	<select id="findDepositByOrderIdAndUserId" resultType="Deposit">
+		SELECT <include refid="columns" />
+		FROM tab_deposit
+		<where>
+	      	status = 0
+	       <if test="orderid != null and orderid != ''">
+				AND orderid = #{orderid}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+		</where>
+	</select>
+	
+	
+	 <!--充值金额统计 -->
+    <select id="statisUserDeposit" resultType="map">
+        SELECT sum(money) as totalMoney, count(1) as allCount
+        FROM tab_deposit
+        <where>
+             1=1 AND status = 1 AND method=1 
+            <if test="startDate != null and startDate != ''">
+                AND date(createtime) >= #{startDate}
+            </if>
+            <if test="endDate != null and endDate != ''">
+                <![CDATA[AND date(createtime) <= #{endDate}]]>
+            </if>
+        </where>
+    </select>
+</mapper> 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.MarketplanRuleDao">
+
+    <resultMap id="resultMap" type="com.palm.lingcai.entity.MarketplanRule">
+        <result property="id" column="id"/>
+        <result property="rule" column="rule"/>
+        <result property="ticketUserNum" column="ticketUserNum"/>
+        <result property="ticketGroup" column="ticketGroup"/>
+        <result property="ticketCopies" column="ticketCopies"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		id,rule,ticketUserNum,ticketGroup,ticketCopies
+	</sql>
+
+    <!-- 获取用户: 输出直接映射到对象 -->
+    <select id="get" parameterType="Long" resultType="MarketplanRule">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_marketplan_rule
+        WHERE id=#{id}
+    </select>
+
+</mapper>

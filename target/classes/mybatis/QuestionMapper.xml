@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.QuestionDao">
+
+    <resultMap id="resultMap" type="com.palm.lingcai.entity.Question">
+        <result property="id" column="id"/>
+        <result property="marketId" column="marketId"/>
+        <result property="sortId" column="sortId"/>
+        <result property="title" column="title"/>
+        <result property="subTitle" column="subTitle"/>
+        <result property="questionDesc" column="questionDesc"/>
+        <result property="questionType" column="questionType"/>
+        <result property="rightTips" column="rightTips"/>
+        <result property="wrongTips" column="wrongTips"/>
+        <result property="answer" column="answer"/>
+        <result property="createTime" column="createTime"/>
+        <result property="modifyTime" column="modifyTime"/>
+        <!-- 一对多 property指的是Bean中的属性 ofType:集合中的类型 -->
+        <collection property="options" ofType="com.palm.lingcai.entity.Qoption" column="questionId">
+        	<result property="id" column="oid"/>
+            <result property="questionId" column="questionId"/>
+            <result property="optionName" column="optionName"/>
+            <result property="subTitle" column="subTitle"/>
+            <result property="optionDesc" column="optionDesc"/>
+            <result property="sortId" column="sortId"/>
+            <result property="createTime" column="createTime"/>
+            <result property="modifyTime" column="modifyTime"/>
+        </collection>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		id,marketId,sortId,title,subTitle,questionDesc,questionType,rightTips,wrongTips,answer,createTime,modifyTime
+	</sql>
+
+    <!-- 获取用户: 输出直接映射到对象 -->
+    <select id="get" parameterType="Long" resultType="Question">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_question
+        WHERE id=#{id}
+    </select>
+    <!--关联查询-->
+    <select id="searchLinks" resultMap="resultMap">
+        SELECT q.*,o.id as oid,o.* FROM tab_question q inner join tab_qoption o
+        on  q.id=o.questionId
+        <where>
+            <if test="id != null">
+                AND q.id = #{id}
+            </if>
+            <if test="marketId != null and marketId != ''">
+                AND q.marketId = #{marketId}
+            </if>
+        </where>
+    </select>
+    
+     <!--关联查询-->
+    <select id="findQuestionById" resultMap="resultMap">
+        SELECT q.*,o.id as oid,o.* 
+		FROM tab_question q inner join tab_qoption o
+        on  q.id=o.questionId
+        <where>
+            <if test="id != null">
+                AND q.id = #{id}
+            </if>
+        </where>
+    </select>
+
+    <!-- 查询用户, 不分页 -->
+    <select id="search" parameterType="map" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_question
+        <where>
+            <if test="marketId != null and marketId != ''">
+                AND marketId = #{marketId}
+            </if>
+            <if test="sortId != null and sortId != ''">
+                AND sortId = #{sortId}
+            </if>
+            <if test="title != null and title != ''">
+                AND title = #{title}
+            </if>
+            <if test="subTitle != null and subTitle != ''">
+                AND subTitle = #{subTitle}
+            </if>
+            <if test="questionDesc != null and questionDesc != ''">
+                AND questionDesc = #{questionDesc}
+            </if>
+            <if test="questionType != null and questionType != ''">
+                AND questionType = #{questionType}
+            </if>
+            <if test="rightTips != null and rightTips != ''">
+                AND rightTips = #{rightTips}
+            </if>
+            <if test="wrongTips != null and wrongTips != ''">
+                AND wrongTips = #{wrongTips}
+            </if>
+            <if test="answer != null and answer != ''">
+                AND answer = #{answer}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND createTime = #{createTime}
+            </if>
+            <if test="modifyTime != null and modifyTime != ''">
+                AND modifyTime = #{modifyTime}
+            </if>
+        </where>
+        <if test="sortColumns != null and sortColumns != ''">
+            ORDER BY ${sortColumns}
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="searchPage" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_question
+        <where>
+            <if test="searchFields.marketId != null and searchFields.marketId != ''">
+                AND marketId = #{searchFields.marketId}
+            </if>
+            <if test="searchFields.sortId != null and searchFields.sortId != ''">
+                AND sortId = #{searchFields.sortId}
+            </if>
+            <if test="searchFields.title != null and searchFields.title != ''">
+                AND title = #{searchFields.title}
+            </if>
+            <if test="searchFields.subTitle != null and searchFields.subTitle != ''">
+                AND subTitle = #{searchFields.subTitle}
+            </if>
+            <if test="searchFields.questionDesc != null and searchFields.questionDesc != ''">
+                AND questionDesc = #{searchFields.questionDesc}
+            </if>
+            <if test="searchFields.questionType != null and searchFields.questionType != ''">
+                AND questionType = #{searchFields.questionType}
+            </if>
+            <if test="searchFields.rightTips != null and searchFields.rightTips != ''">
+                AND rightTips = #{searchFields.rightTips}
+            </if>
+            <if test="searchFields.wrongTips != null and searchFields.wrongTips != ''">
+                AND wrongTips = #{searchFields.wrongTips}
+            </if>
+            <if test="searchFields.answer != null and searchFields.answer != ''">
+                AND answer = #{searchFields.answer}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.modifyTime != null and searchFields.modifyTime != ''">
+                AND modifyTime = #{searchFields.modifyTime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY ${searchFields.sortColumns}
+        </if>
+    </select>
+
+    <!-- 新增 -->
+    <insert id="insert" parameterType="Question" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_question (
+        	marketId,
+        	sortId,
+        	title,
+        	subTitle,
+        	questionDesc,
+        	questionType,
+        	rightTips,
+        	wrongTips,
+        	answer,
+        	createTime,
+        	modifyTime
+		) VALUES (
+        	#{marketId},
+        	#{sortId},
+        	#{title},
+        	#{subTitle},
+        	#{questionDesc},
+        	#{questionType},
+        	#{rightTips},
+        	#{wrongTips},
+        	#{answer},
+        	#{createTime},
+        	#{modifyTime}
+		)
+	</insert>
+
+    <!-- 更新 -->
+    <update id="update">
+        UPDATE tab_question
+        <set>
+            marketId = #{marketId},
+            sortId = #{sortId},
+            title = #{title},
+            subTitle = #{subTitle},
+            questionDesc = #{questionDesc},
+            questionType = #{questionType},
+            rightTips = #{rightTips},
+            wrongTips = #{wrongTips},
+            answer = #{answer},
+            createTime = #{createTime},
+            modifyTime = #{modifyTime}
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="Long">
+	     DELETE FROM tab_question WHERE id=#{id}
+	</delete>
+
+    <!-- 分页查询某个营销计划问题 -->
+    <select id="findQuestionByMarketplanPage" resultMap="resultMap">
+        SELECT
+        q.id,q.marketId,q.sortId,q.title,q.subTitle,q.questionDesc,q.questionType,q.rightTips,q.wrongTips,q.answer,q.createTime,q.modifyTime
+        FROM tab_question as q,tab_marketplan as m
+        <where>
+            AND q.marketId=m.id
+            <if test="searchFields.userId!= null and searchFields.userId != ''">
+                AND m.userId= #{searchFields.userId}
+            </if>
+            <if test="searchFields.marketId != null and searchFields.marketId != ''">
+                AND q.marketId = #{searchFields.marketId}
+            </if>
+            <if test="searchFields.sortId != null and searchFields.sortId != ''">
+                AND q.sortId = #{searchFields.sortId}
+            </if>
+            <if test="searchFields.title != null and searchFields.title != ''">
+                AND q.title = #{searchFields.title}
+            </if>
+            <if test="searchFields.subTitle != null and searchFields.subTitle != ''">
+                AND q.subTitle = #{searchFields.subTitle}
+            </if>
+            <if test="searchFields.questionDesc != null and searchFields.questionDesc != ''">
+                AND q.questionDesc = #{searchFields.questionDesc}
+            </if>
+            <if test="searchFields.questionType != null and searchFields.questionType != ''">
+                AND q.questionType = #{searchFields.questionType}
+            </if>
+            <if test="searchFields.rightTips != null and searchFields.rightTips != ''">
+                AND q.rightTips = #{searchFields.rightTips}
+            </if>
+            <if test="searchFields.wrongTips != null and searchFields.wrongTips != ''">
+                AND q.wrongTips = #{searchFields.wrongTips}
+            </if>
+            <if test="searchFields.answer != null and searchFields.answer != ''">
+                AND q.answer = #{searchFields.answer}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND q.createTime = #{searchFields.createTime}
+            </if>
+            <if test="searchFields.modifyTime != null and searchFields.modifyTime != ''">
+                AND q.modifyTime = #{searchFields.modifyTime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY q.${searchFields.sortColumns}
+        </if>
+    </select>
+    <!--  查询某个营销计划的最大序号 -->
+    <select id="findMaxSortIdByMarketplanId" parameterType="Long" resultType="Question">
+        select
+        <include refid="columns"/>
+        from tab_question
+        where marketId=#{marketId} and 1=1
+        order by sortId desc limit 1
+    </select>
+ <!-- 删除用户 -->
+    <delete id="deleteByMarketplanId" parameterType="Long">
+	     DELETE FROM tab_question WHERE marketId=#{marketId}
+	</delete>
+
+</mapper> 

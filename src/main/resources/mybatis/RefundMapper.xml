@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.RefundDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Refund">
+        <result property="id" column="id"/>
+        <result property="marketid" column="marketid"/>
+        <result property="marketName" column="marketName"/>
+        <result property="userid" column="userid"/>
+        <result property="method" column="method"/>
+        <result property="refundMoney" column="refundMoney"/>
+        <result property="createTime" column="createTime"/>
+        <result property="status" column="status"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,marketid,marketName,userid,method,refundMoney,createTime,status
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Refund">
+		SELECT <include refid="columns" />
+		FROM tab_refund
+		WHERE id=#{id}
+	</select>
+	
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_refund
+		<where>
+	       <if test="marketid != null and marketid != ''">
+				AND marketid = #{marketid}
+		   </if>
+		   <if test="marketName != null and marketName != ''">
+				AND marketName = #{marketName}
+		   </if>
+	       <if test="userid != null and userid != ''">
+				AND userid = #{userid}
+		   </if>
+	       <if test="method != null and method != ''">
+				AND method = #{method}
+		   </if>
+	       <if test="refundMoney != null and refundMoney != ''">
+				AND refundMoney = #{refundMoney}
+		   </if>
+	       <if test="createTime != null and createTime != ''">
+				AND createTime = #{createTime}
+		   </if>
+	       <if test="status != null and status != ''">
+				AND status = #{status}
+		   </if>
+		</where>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_refund
+		<where>
+	       <if test="searchFields.marketid != null and searchFields.marketid != ''">
+				AND marketid = #{searchFields.marketid}
+			</if>
+			 <if test="searchFields.marketName != null and searchFields.marketName != ''">
+				AND marketName = #{searchFields.marketName}
+			</if>
+	       <if test="searchFields.userid != null and searchFields.userid != ''">
+				AND userid = #{searchFields.userid}
+			</if>
+	       <if test="searchFields.method != null and searchFields.method != ''">
+				AND method = #{searchFields.method}
+			</if>
+	       <if test="searchFields.refundMoney != null and searchFields.refundMoney != ''">
+				AND refundMoney = #{searchFields.refundMoney}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.status != null and searchFields.status != ''">
+				AND status = #{searchFields.status}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Refund" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_refund (
+        	marketid,
+        	marketName,
+        	userid,
+        	method,
+        	refundMoney,
+        	createTime,
+        	status
+		) VALUES (
+        	#{marketid},
+        	#{marketName},
+        	#{userid},
+        	#{method},
+        	#{refundMoney},
+        	#{createTime},
+        	#{status}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_refund
+		<set>
+			marketid = #{marketid},
+			marketName = #{marketName},
+			userid = #{userid},
+			method = #{method},
+			refundMoney = #{refundMoney},
+			createTime = #{createTime},
+			status = #{status}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_refund WHERE id=#{id}
+	</delete>
+</mapper> 

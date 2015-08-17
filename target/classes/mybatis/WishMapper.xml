@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.WishDao">
+
+	<resultMap id="resultMap" type="com.palm.lingcai.entity.Wish">
+        <result property="id" column="id"/>
+        <result property="content" column="content"/>
+        <result property="wishType" column="wishType"/>
+        <result property="remark" column="remark"/>
+        <result property="createTime" column="createTime"/>
+        <result property="modifyTime" column="modifyTime"/>
+	</resultMap>
+	
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="columns">
+		id,content,wishType,remark,createTime,modifyTime
+	</sql>
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="get" parameterType="Long" resultType="Wish">
+		SELECT <include refid="columns" />
+		FROM tab_wish
+		WHERE id=#{id}
+	</select>
+	
+
+	<!-- 查询用户, 不分页 -->
+	<select id="search" parameterType="map" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_wish
+		<where>
+	       <if test="content != null and content != ''">
+				AND content = #{content}
+		   </if>
+	       <if test="wishType != null and wishType != ''">
+				AND wishType = #{wishType}
+		   </if>
+	       <if test="remark != null and remark != ''">
+				AND remark = #{remark}
+		   </if>
+	       <if test="createTime != null and createTime != ''">
+				AND createTime = #{createTime}
+		   </if>
+	       <if test="modifyTime != null and modifyTime != ''">
+				AND modifyTime = #{modifyTime}
+		   </if>
+		</where>
+		<if test="sortColumns != null and sortColumns != ''">
+			ORDER BY ${sortColumns}
+		</if>
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="searchPage" resultMap="resultMap">
+		SELECT <include refid="columns" />
+		FROM tab_wish
+		<where>
+	       <if test="searchFields.content != null and searchFields.content != ''">
+				AND content = #{searchFields.content}
+			</if>
+	       <if test="searchFields.wishType != null and searchFields.wishType != ''">
+				AND wishType = #{searchFields.wishType}
+			</if>
+	       <if test="searchFields.remark != null and searchFields.remark != ''">
+				AND remark = #{searchFields.remark}
+			</if>
+	       <if test="searchFields.createTime != null and searchFields.createTime != ''">
+				AND createTime = #{searchFields.createTime}
+			</if>
+	       <if test="searchFields.modifyTime != null and searchFields.modifyTime != ''">
+				AND modifyTime = #{searchFields.modifyTime}
+			</if>
+		</where>
+		<if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+			ORDER BY ${searchFields.sortColumns}
+		</if>
+	</select>
+	
+	<!-- 新增 -->
+	<insert id="insert" parameterType="Wish" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_wish (
+        	content,
+        	wishType,
+        	remark,
+        	createTime,
+        	modifyTime
+		) VALUES (
+        	#{content},
+        	#{wishType},
+        	#{remark},
+        	#{createTime},
+        	#{modifyTime}
+		)
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="update" >
+        UPDATE tab_wish
+		<set>
+			content = #{content},
+			wishType = #{wishType},
+			remark = #{remark},
+			createTime = #{createTime},
+			modifyTime = #{modifyTime}
+		</set>
+        WHERE 
+	        id = #{id}
+	</update>
+	
+	<!-- 删除用户 -->
+	<delete id="delete" parameterType="Long">
+	     DELETE FROM tab_wish WHERE id=#{id}
+	</delete>
+	
+	
+	<!-- 获取用户: 输出直接映射到对象 -->
+	<select id="randomWish"  resultType="Wish">
+		SELECT <include refid="columns" />
+		FROM tab_wish
+		order by Rand() limit 1
+	</select>
+	
+</mapper> 

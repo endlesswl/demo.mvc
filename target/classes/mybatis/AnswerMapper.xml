@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.palm.lingcai.repository.AnswerDao">
+
+    <resultMap id="resultMap" type="com.palm.lingcai.entity.Answer">
+        <result property="id" column="id"/>
+        <result property="questionId" column="questionId"/>
+        <result property="userId" column="userId"/>
+        <result property="answer" column="answer"/>
+        <result property="isRight" column="isRight"/>
+        <result property="createTime" column="createTime"/>
+    </resultMap>
+
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="columns">
+		id,questionId,userId,answer,isRight,createTime
+	</sql>
+
+    <!-- 获取用户: 输出直接映射到对象 -->
+    <select id="get" parameterType="Long" resultType="Answer">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_answer
+        WHERE id=#{id}
+    </select>
+
+
+    <!-- 查询用户, 不分页 -->
+    <select id="search" parameterType="map" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_answer
+        <where>
+            <if test="questionId != null and questionId != ''">
+                AND questionId = #{questionId}
+            </if>
+            <if test="userId != null and userId != ''">
+                AND userId = #{userId}
+            </if>
+            <if test="answer != null and answer != ''">
+                AND answer = #{answer}
+            </if>
+            <if test="isRight != null and isRight != ''">
+                AND isRight = #{isRight}
+            </if>
+            <if test="createTime != null and createTime != ''">
+                AND createTime = #{createTime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY ${searchFields.sortColumns}
+        </if>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="searchPage" resultMap="resultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM tab_answer
+        <where>
+            <if test="searchFields.questionId != null and searchFields.questionId != ''">
+                AND questionId = #{searchFields.questionId}
+            </if>
+            <if test="searchFields.userId != null and searchFields.userId != ''">
+                AND userId = #{searchFields.userId}
+            </if>
+            <if test="searchFields.answer != null and searchFields.answer != ''">
+                AND answer = #{searchFields.answer}
+            </if>
+            <if test="searchFields.isRight != null and searchFields.isRight != ''">
+                AND isRight = #{searchFields.isRight}
+            </if>
+            <if test="searchFields.createTime != null and searchFields.createTime != ''">
+                AND createTime = #{searchFields.createTime}
+            </if>
+        </where>
+        <if test="searchFields.sortColumns != null and searchFields.sortColumns != ''">
+            ORDER BY ${searchFields.sortColumns}
+        </if>
+    </select>
+
+    <!-- 新增 -->
+    <insert id="insert" parameterType="Answer" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO tab_answer (
+        	questionId,
+        	userId,
+        	answer,
+        	isRight,
+        	createTime
+		) VALUES (
+        	#{questionId},
+        	#{userId},
+        	#{answer},
+        	#{isRight},
+        	#{createTime}
+		)
+	</insert>
+
+    <!-- 更新 -->
+    <update id="update">
+        UPDATE tab_answer
+        <set>
+            questionId = #{questionId},
+            userId = #{userId},
+            answer = #{answer},
+            isRight = #{isRight},
+            createTime = #{createTime}
+        </set>
+        WHERE
+        id = #{id}
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="Long">
+	     DELETE FROM tab_answer WHERE id=#{id}
+	</delete>
+</mapper> 
