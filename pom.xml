@@ -147,7 +147,13 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.framework.version}</version>
 		</dependency>
-
+		<!-- mybatis 分页插件 -->
+		<dependency>
+			<groupId>com.github.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+			<version>0.9.1</version>
+			<optional>true</optional>
+		</dependency>
 		<!-- Spring data 极大的简化JPA的写法，可以在几乎不用写实现的情况下， 实现对数据的访问和操作。除了CRUD外，还包括如分页、排序等一些常用的功能。 -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>

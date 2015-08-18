@@ -12,23 +12,11 @@
 
 	<!-- 此处对于定时时间的配置会被注解中的时间配置覆盖，因此，以注解配置为准 -->
     <task:scheduled-tasks scheduler="myScheduler">
-        <!-- 转账失败，每天23点一次 
-        <task:scheduled ref="withdrawFailTaskService" method="doJob" cron="0 0 23 * * ?"/>-->
-		<!-- 上传支付文件，每天1点一次 -->
-        <!--<task:scheduled ref="withdrawTask" method="uploadPayFile" cron="0 0 1 * * ?"/>-->
-        <task:scheduled ref="ticketTaskService" method="initIssueNo_DLT" cron="0 30 19 * * *"/>
-        <!-- 中奖号码，每天1小时一次 -->
-        <task:scheduled ref="ticketTaskService" method="initPrizeBall" cron="0 1 * * * *"/>
+        <!-- 定时输出信息 每分钟执行一次 -->
+        <task:scheduled ref="testDemoJobs" method="initDemoMsg" cron="0 */1 * * * *"/>
     </task:scheduled-tasks>
     <task:scheduler id="myScheduler" pool-size="10"/> 
  
- 	<!-- 出票成功推送监听器    
-	<bean id="notifyOrderListener" class="com.palm.lingcai.service.task.NotifyOrderListener" destroy-method="destroy" lazy-init="false">
-        <property name="isClosed" value="false"></property>
-        <property name="idleTime" value="5"></property>
-    </bean>	-->
- 
-    
     <context:property-placeholder location="classpath:application.properties" />
     <!-- 导入ehcache缓存配置 -->
 	<import resource="ehcache/applicationContext-ehcache.xml" /> 
@@ -57,53 +45,17 @@
             <property name="minEvictableIdleTimeMillis" value="3600000"/>
     </bean>
     
-    
-    <bean id="spyMemcachedClient"
-          class="org.springside.modules.cache.memcached.SpyMemcachedClient">
-        <property name="memcachedClient">
-            <bean class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-                <property name="servers" value="${memcached.url}"/>
-                <!-- 默认是TEXT -->
-                <property name="protocol" value="TEXT"/>
-                <!-- 默认是ARRAY_MOD -->
-                <property name="locatorType" value="CONSISTENT"/>
-                <!-- 默认是2500毫秒 -->
-                <property name="opTimeout" value="1000"/>
-            </bean>
-        </property>
-        <property name="updateTimeout" value="1000"/>
-        <property name="shutdownTimeout" value="1000"/>
-    </bean>
-    
-     <!-- Memcached客户端 -->
-    <bean id="memcachedClient"
-          class="org.springside.modules.cache.memcached.SpyMemcachedClient">
-        <property name="memcachedClient">
-            <bean class="net.spy.memcached.spring.MemcachedClientFactoryBean">
-                <property name="servers" value="${memcached.url}"/>
-                <!-- 默认是TEXT -->
-                <property name="protocol" value="TEXT"/>
-                <!-- 默认是ARRAY_MOD -->
-                <property name="locatorType" value="CONSISTENT"/>
-                <!-- 默认是2500毫秒 -->
-                <property name="opTimeout" value="1000"/>
-            </bean>
-        </property>
-        <property name="updateTimeout" value="1000"/>
-        <property name="shutdownTimeout" value="1000"/>
-    </bean>
-    
     <!-- 配置MyBatis分页： -->
     <bean id="pagePlugin"
-          class="com.palm.commom.plugin.paginator.mybatis.MybatisPaginationInterceptor">
+          class="com.palm.lingcai.dao.page.PageHelper">
         <property name="properties">
-            <props>
-                <prop key="dialectClass">com.palm.commom.plugin.paginator.mybatis.jdbc.dialet.MySQLDialect</prop>
-            </props>
-        </property>
+			<props>
+				<prop key="dialect">mysql</prop>
+				<prop key="pageSizeZero">true</prop>
+			</props>
+		</property>
     </bean>
-    
-	<!-- 配置MyBatis组件：SqlSessionFactoryBean -->
+    <!-- 配置MyBatis组件：SqlSessionFactoryBean -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!-- 自动扫描entity目录，省掉Mapper.xml手工配置 -->
@@ -118,7 +70,6 @@
 		<property name="mapperLocations" value="classpath*:mybatis/*.xml" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
-    
     <!-- 扫描basePackage下所有以@Repository标识的 接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.palm.lingcai" />

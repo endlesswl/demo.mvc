@@ -2,7 +2,6 @@ package com.palm.lingcai.exception;
 
 /**
  * 异常代码统一封装
- * Created by jianhe on 13-12-25.
  */
 public class ExceptionCode {
     /**
