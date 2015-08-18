@@ -2,8 +2,6 @@ package com.palm.lingcai.util;
 
 import java.util.UUID;
 
-import com.palm.commom.uitl.DateFormatUtil;
-
 /**
  * UUID生成工具类
  * Created by jianhe on 13-12-18.
@@ -49,12 +47,12 @@ public class UUIDUtils {
      *
      * @return
      */
-    public static Long getSerialID() {
-        String cur = DateFormatUtil.getCurrentDate("yyyyMMddHHmmss");
-        Double as = Math.random() * 90000 + 10000;
-        cur = cur + as.intValue();
-        return Long.valueOf(cur);
-    }
+//    public static Long getSerialID() {
+//        String cur = DateFormatUtil.getCurrentDate("yyyyMMddHHmmss");
+//        Double as = Math.random() * 90000 + 10000;
+//        cur = cur + as.intValue();
+//        return Long.valueOf(cur);
+//    }
 
     /**
      * 获得随机定长6位数字

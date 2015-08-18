@@ -8780,3 +8780,686 @@ Caused by: java.lang.ClassNotFoundException: com.palm.lingcai.controller.interce
 20:22:41.500 [203991534@qtp-711939658-4] DEBUG o.s.web.servlet.DispatcherServlet - Null ModelAndView returned to DispatcherServlet with name 'springServlet': assuming HandlerAdapter completed request handling
 20:22:41.500 [203991534@qtp-711939658-4] DEBUG o.s.web.servlet.DispatcherServlet - Successfully completed request
 20:22:41.501 [203991534@qtp-711939658-4] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'sqlSessionFactory'
+23:45:55.692 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+23:45:55.804 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+23:45:55.805 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletContextInitParams] PropertySource with lowest search precedence
+23:45:55.816 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [jndiProperties] PropertySource with lowest search precedence
+23:45:55.817 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+23:45:55.821 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+23:45:55.822 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+23:45:55.828 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+23:45:55.829 [main] INFO  o.s.w.c.s.XmlWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Tue Aug 18 23:45:55 CST 2015]; root of context hierarchy
+23:45:55.877 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+23:45:55.878 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+23:45:55.878 [main] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+23:45:55.893 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from URL [file:/Users/nzhmac/git/demo.mvc/target/classes/applicationContext.xml]
+23:45:55.903 [main] DEBUG o.s.b.f.xml.DefaultDocumentLoader - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+23:45:55.993 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Loading schema mappings from [META-INF/spring.schemas]
+23:45:56.001 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Loaded schema mappings: {http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/context/spring-context-3.1.xsd=org/springframework/context/config/spring-context-3.1.xsd, http://www.springframework.org/schema/data/repository/spring-repository-1.4.xsd=org/springframework/data/repository/config/spring-repository-1.4.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/data/jpa/spring-jpa.xsd=org/springframework/data/jpa/repository/config/spring-jpa-1.3.xsd, http://mybatis.org/schema/mybatis-spring-1.2.xsd=org/mybatis/spring/config/mybatis-spring-1.2.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-4.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.2.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/redis/spring-redis.xsd=org/springframework/data/redis/config/spring-redis-1.0.xsd, http://www.springframework.org/schema/context/spring-context-4.0.xsd=org/springframework/context/config/spring-context-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd=org/springframework/web/servlet/config/spring-mvc-3.2.xsd, http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd=org/springframework/oxm/config/spring-oxm-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.2.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.2.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd=org/springframework/jdbc/config/spring-jdbc-3.1.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.2.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-4.0.xsd, http://www.springframework.org/schema/aop/spring-aop-4.0.xsd=org/springframework/aop/config/spring-aop-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.2.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd=org/springframework/jdbc/config/spring-jdbc-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd=org/springframework/web/servlet/config/spring-mvc-4.0.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans-3.2.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-3.1.xsd=org/springframework/aop/config/spring-aop-3.1.xsd, http://www.springframework.org/schema/lang/spring-lang-4.0.xsd=org/springframework/scripting/config/spring-lang-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc.xsd=org/springframework/web/servlet/config/spring-mvc-4.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd=org/springframework/web/servlet/config/spring-mvc-3.1.xsd, http://www.springframework.org/schema/redis/spring-redis-1.0.xsd=org/springframework/data/redis/config/spring-redis-1.0.xsd, http://www.springframework.org/schema/tool/spring-tool-4.0.xsd=org/springframework/beans/factory/xml/spring-tool-4.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.1.xsd=org/springframework/scripting/config/spring-lang-3.1.xsd, http://www.springframework.org/schema/tx/spring-tx-3.2.xsd=org/springframework/transaction/config/spring-tx-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache-3.1.xsd=org/springframework/cache/config/spring-cache-3.1.xsd, http://www.springframework.org/schema/jee/spring-jee-4.0.xsd=org/springframework/ejb/config/spring-jee-4.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.1.xsd=org/springframework/beans/factory/xml/spring-tool-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-4.0.xsd=org/springframework/cache/config/spring-cache-4.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.1.xsd=org/springframework/ejb/config/spring-jee-3.1.xsd, http://www.springframework.org/schema/task/spring-task-3.2.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.1.xsd=org/springframework/beans/factory/xml/spring-beans-3.1.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-4.0.xsd, http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd=org/springframework/data/jpa/repository/config/spring-jpa-1.3.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/data/repository/spring-repository.xsd=org/springframework/data/repository/config/spring-repository-1.7.xsd, http://www.springframework.org/schema/data/repository/spring-repository-1.7.xsd=org/springframework/data/repository/config/spring-repository-1.7.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd=org/springframework/web/servlet/config/spring-mvc-3.0.xsd, http://www.springframework.org/schema/beans/spring-beans-4.0.xsd=org/springframework/beans/factory/xml/spring-beans-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-4.0.xsd, http://mybatis.org/schema/mybatis-spring.xsd=org/mybatis/spring/config/mybatis-spring-1.2.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.1.xsd=org/springframework/transaction/config/spring-tx-3.1.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/task/spring-task-4.0.xsd=org/springframework/scheduling/config/spring-task-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-4.0.xsd=org/springframework/transaction/config/spring-tx-4.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/task/spring-task-3.1.xsd=org/springframework/scheduling/config/spring-task-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/data/jpa/spring-jpa-1.2.xsd=org/springframework/data/jpa/repository/config/spring-jpa-1.2.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-4.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/data/repository/spring-repository-1.6.xsd=org/springframework/data/repository/config/spring-repository-1.6.xsd, http://www.springframework.org/schema/oxm/spring-oxm.xsd=org/springframework/oxm/config/spring-oxm-4.0.xsd, http://www.springframework.org/schema/util/spring-util-3.2.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-4.0.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/oxm/spring-oxm-3.2.xsd=org/springframework/oxm/config/spring-oxm-3.2.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/data/repository/spring-repository-1.0.xsd=org/springframework/data/repository/config/spring-repository-1.0.xsd, http://www.springframework.org/schema/util/spring-util-4.0.xsd=org/springframework/beans/factory/xml/spring-util-4.0.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://www.springframework.org/schema/data/jpa/spring-jpa-1.1.xsd=org/springframework/data/jpa/repository/config/spring-jpa-1.1.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-4.0.xsd, http://www.springframework.org/schema/context/spring-context-3.2.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd=org/springframework/data/repository/config/spring-repository-1.5.xsd, http://www.springframework.org/schema/util/spring-util-3.1.xsd=org/springframework/beans/factory/xml/spring-util-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/oxm/spring-oxm-4.0.xsd=org/springframework/oxm/config/spring-oxm-4.0.xsd, http://www.springframework.org/schema/cache/spring-cache.xsd=org/springframework/cache/config/spring-cache-4.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-4.0.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd, http://www.springframework.org/schema/oxm/spring-oxm-3.1.xsd=org/springframework/oxm/config/spring-oxm-3.1.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd=org/springframework/jdbc/config/spring-jdbc-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-4.0.xsd, http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd=org/springframework/data/jpa/repository/config/spring-jpa-1.0.xsd}
+23:45:56.003 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+23:45:56.082 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/task/spring-task-4.0.xsd] in classpath: org/springframework/scheduling/config/spring-task-4.0.xsd
+23:45:56.089 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/tool/spring-tool-4.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-4.0.xsd
+23:45:56.098 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+23:45:56.114 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/tx/spring-tx-3.0.xsd] in classpath: org/springframework/transaction/config/spring-tx-3.0.xsd
+23:45:56.126 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Loading bean definitions
+23:45:56.151 [main] DEBUG o.s.b.f.x.DefaultNamespaceHandlerResolver - Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/mvc=org.springframework.web.servlet.config.MvcNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/redis=org.springframework.data.redis.config.RedisNamespaceHandler, http://www.springframework.org/schema/data/repository=org.springframework.data.repository.config.RepositoryNameSpaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/oxm=org.springframework.oxm.config.OxmNamespaceHandler, http://www.springframework.org/schema/data/jpa=org.springframework.data.jpa.repository.config.JpaRepositoryNameSpaceHandler, http://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler, http://mybatis.org/schema/mybatis-spring=org.mybatis.spring.config.NamespaceHandler, http://www.springframework.org/schema/c=org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+23:45:56.195 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from URL [file:/Users/nzhmac/git/demo.mvc/target/classes/ehcache/applicationContext-ehcache.xml]
+23:45:56.197 [main] DEBUG o.s.b.f.xml.DefaultDocumentLoader - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+23:45:56.201 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.2.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+23:45:56.253 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Loading bean definitions
+23:45:56.257 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Imported 1 bean definitions from relative location [ehcache/applicationContext-ehcache.xml]
+23:45:56.260 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]
+23:45:56.265 [main] DEBUG o.s.b.f.xml.DefaultDocumentLoader - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+23:45:56.269 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.2.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+23:45:56.288 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Loading bean definitions
+23:45:56.290 [main] DEBUG o.s.b.f.x.BeanDefinitionParserDelegate - Neither XML 'id' nor 'name' specified - using generated bean name [net.spy.memcached.spring.MemcachedClientFactoryBean#4a9e6faf]
+23:45:56.291 [main] DEBUG o.s.b.f.x.BeanDefinitionParserDelegate - Neither XML 'id' nor 'name' specified - using generated bean name [net.spy.memcached.spring.MemcachedClientFactoryBean#2c95ac9e]
+23:45:56.292 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Imported 2 bean definitions from relative location [memcache/applicationContext-memcache.xml]
+23:45:56.293 [main] INFO  o.s.b.f.xml.XmlBeanDefinitionReader - Loading XML bean definitions from URL [file:/Users/nzhmac/git/demo.mvc/target/classes/redis/applicationContext-redis.xml]
+23:45:56.296 [main] DEBUG o.s.b.f.xml.DefaultDocumentLoader - Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+23:45:56.299 [main] DEBUG o.s.b.f.xml.PluggableSchemaResolver - Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.2.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+23:45:56.314 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Loading bean definitions
+23:45:56.321 [main] DEBUG o.s.b.f.x.DefaultBeanDefinitionDocumentReader - Imported 5 bean definitions from relative location [redis/applicationContext-redis.xml]
+23:45:56.387 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+23:45:56.388 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+23:45:56.388 [main] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+23:45:56.400 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+23:45:56.412 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai]
+23:45:56.413 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.416 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/controller] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.417 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.418 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.422 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/entity] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.422 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/exception] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.423 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.424 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/jobs] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.425 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/memcached] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.425 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.427 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/statuscode] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.427 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.428 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.434 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/palm/lingcai/**/*.class] to resources [file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/controller/TestDemoController.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/Page.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PageHelper.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PageInfo.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$Dialect.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$HsqldbParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$MyDynamicSqlSource.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$MyProviderSqlSource.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$MysqlParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$OracleParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$Parser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$PostgreSQLParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$SimpleParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/SqlParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/TestDemoDao.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/entity/TestDemo.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/exception/ExceptionCode.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/exception/TestDemoException.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/jobs/TestDemoJobs.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/memcached/TestDemoMemcachedClient.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisListOpsService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$1.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$10.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$11.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$2.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$3.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$4.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$5.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$6.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$7.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$8.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$9.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/TestDemoService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/statuscode/TestEnum.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/BallsUtils.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/Cnk.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/HttpClientUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/JsonUtils.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/PrizeDrawUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/ProPertiesUtils.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/RegexValidator.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsClient.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsContentBean.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsSendService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsSendUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/UUIDUtils.class]]
+23:45:56.482 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/controller/TestDemoController.class]
+23:45:56.491 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Ignored because not a concrete top-level class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/TestDemoDao.class]
+23:45:56.495 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/jobs/TestDemoJobs.class]
+23:45:56.496 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisListOpsService.class]
+23:45:56.500 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl.class]
+23:45:56.506 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/TestDemoService.class]
+23:45:56.514 [main] DEBUG o.s.c.a.ClassPathBeanDefinitionScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsSendService.class]
+23:45:56.523 [main] DEBUG o.s.b.f.x.BeanDefinitionParserDelegate - Neither XML 'id' nor 'name' specified - using generated bean name [org.mybatis.spring.mapper.MapperScannerConfigurer#0]
+23:45:56.563 [main] DEBUG o.s.b.f.xml.XmlBeanDefinitionReader - Loaded 33 bean definitions from location pattern [classpath*:/applicationContext.xml]
+23:45:56.564 [main] DEBUG o.s.w.c.s.XmlWebApplicationContext - Bean factory for Root WebApplicationContext: org.springframework.beans.factory.support.DefaultListableBeanFactory@41c07648: defining beans [org.springframework.scheduling.support.ScheduledMethodRunnable#0,org.springframework.scheduling.config.CronTask#0,org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0,myScheduler,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,ehcacheManager,memcachedClient,spyMemcachedClient,jedisPoolConfig,jedisConnectionFactory,redisTemplate,stringRedisTemplate,cacheManager,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,testDemoController,testDemoJobs,redisListOpsService,redisService,testDemoService,smsSendService,dataSource,pagePlugin,sqlSessionFactory,org.mybatis.spring.mapper.MapperScannerConfigurer#0,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,validator]; root of factory hierarchy
+23:45:56.617 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:82) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:609) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:56.660 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+23:45:56.661 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+23:45:56.677 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+23:45:56.679 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+23:45:56.698 [main] DEBUG o.s.c.a.ConfigurationClassUtils - Could not find class file for introspecting factory methods: org.springside.modules.cache.memcached.SpyMemcachedClient
+java.io.FileNotFoundException: class path resource [org/springside/modules/cache/memcached/SpyMemcachedClient.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:50) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:82) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.core.type.classreading.CachingMetadataReaderFactory.getMetadataReader(CachingMetadataReaderFactory.java:102) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:77) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassUtils.checkConfigurationClassCandidate(ConfigurationClassUtils.java:73) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:280) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:243) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:254) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:94) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:609) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+23:45:56.750 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:97) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:609) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:56.758 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:113) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:609) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:56.780 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+23:45:56.781 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+23:45:56.783 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0' to allow for resolving potential circular references
+23:45:56.822 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Invoking afterPropertiesSet() on bean with name 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+23:45:56.823 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.mybatis.spring.mapper.MapperScannerConfigurer#0'
+23:45:56.831 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+23:45:56.833 [main] DEBUG o.s.core.env.StandardEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+23:45:56.835 [main] DEBUG o.s.core.env.StandardEnvironment - Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+23:45:56.838 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Looking for matching resources in directory tree [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai]
+23:45:56.839 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.839 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/controller] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.840 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.840 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.841 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/entity] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.845 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/exception] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.846 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.847 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/jobs] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.848 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/memcached] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.852 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.853 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/statuscode] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.855 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.857 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Searching directory [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms] for files matching pattern [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/**/*.class]
+23:45:56.859 [main] DEBUG o.s.c.i.s.PathMatchingResourcePatternResolver - Resolved location pattern [classpath*:com/palm/lingcai/**/*.class] to resources [file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/controller/TestDemoController.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/Page.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PageHelper.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PageInfo.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$Dialect.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$HsqldbParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$MyDynamicSqlSource.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$MyProviderSqlSource.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$MysqlParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$OracleParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$Parser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$PostgreSQLParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil$SimpleParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/PluginSqlUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/page/SqlParser.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/TestDemoDao.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/entity/TestDemo.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/exception/ExceptionCode.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/exception/TestDemoException.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/jobs/TestDemoJobs.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/memcached/TestDemoMemcachedClient.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisListOpsService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$1.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$10.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$11.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$2.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$3.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$4.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$5.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$6.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$7.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$8.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl$9.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/redis/RedisServiceImpl.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/service/TestDemoService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/statuscode/TestEnum.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/BallsUtils.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/Cnk.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/HttpClientUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/JsonUtils.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/PrizeDrawUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/ProPertiesUtils.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/RegexValidator.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsClient.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsContentBean.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsSendService.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/sms/SmsSendUtil.class], file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/util/UUIDUtils.class]]
+23:45:56.866 [main] DEBUG o.m.s.mapper.ClassPathMapperScanner - Identified candidate component class: file [/Users/nzhmac/git/demo.mvc/target/classes/com/palm/lingcai/dao/TestDemoDao.class]
+23:45:56.880 [main] DEBUG o.m.s.mapper.ClassPathMapperScanner - Creating MapperFactoryBean with name 'testDemoDao' and 'com.palm.lingcai.dao.TestDemoDao' mapperInterface
+23:45:56.894 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:113) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:609) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:56.900 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:138) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:609) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:464) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:56.902 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+23:45:56.902 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+23:45:56.903 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0' to allow for resolving potential circular references
+23:45:56.919 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+23:45:56.920 [main] INFO  o.s.b.f.c.PropertyPlaceholderConfigurer - Loading properties file from class path resource [application.properties]
+23:45:56.934 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.registerBeanPostProcessors(PostProcessorRegistrationDelegate.java:183) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.registerBeanPostProcessors(AbstractApplicationContext.java:618) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:467) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:56.946 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+23:45:56.948 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+23:45:56.965 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+23:45:56.970 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+23:45:56.971 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+23:45:56.971 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+23:45:56.972 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+23:45:56.973 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+23:45:56.973 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+23:45:56.973 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+23:45:56.979 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+23:45:56.979 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+23:45:56.979 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+23:45:56.980 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+23:45:56.980 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+23:45:56.980 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+23:45:56.981 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+23:45:56.981 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+23:45:56.981 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor' to allow for resolving potential circular references
+23:45:56.981 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor'
+23:45:56.982 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.aop.config.internalAutoProxyCreator'
+23:45:56.982 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.aop.config.internalAutoProxyCreator'
+23:45:57.005 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.aop.config.internalAutoProxyCreator' to allow for resolving potential circular references
+23:45:57.032 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.aop.config.internalAutoProxyCreator'
+23:45:57.038 [main] DEBUG o.s.w.c.s.XmlWebApplicationContext - Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@6b9c69a9]
+23:45:57.042 [main] DEBUG o.s.w.c.s.XmlWebApplicationContext - Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@4bd2f0dc]
+23:45:57.045 [main] DEBUG o.s.u.c.s.UiApplicationContextUtils - Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@383f3558]
+23:45:57.051 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBeanNamesForType(AbstractApplicationContext.java:1057) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.registerListeners(AbstractApplicationContext.java:729) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:479) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 24 common frames omitted
+23:45:57.059 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:748) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 23 common frames omitted
+23:45:57.067 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@41c07648: defining beans [org.springframework.scheduling.support.ScheduledMethodRunnable#0,org.springframework.scheduling.config.CronTask#0,org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0,myScheduler,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,ehcacheManager,memcachedClient,spyMemcachedClient,jedisPoolConfig,jedisConnectionFactory,redisTemplate,stringRedisTemplate,cacheManager,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,testDemoController,testDemoJobs,redisListOpsService,redisService,testDemoService,smsSendService,dataSource,pagePlugin,sqlSessionFactory,org.mybatis.spring.mapper.MapperScannerConfigurer#0,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,validator,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,testDemoDao]; root of factory hierarchy
+23:45:57.068 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.scheduling.support.ScheduledMethodRunnable#0'
+23:45:57.068 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.scheduling.support.ScheduledMethodRunnable#0'
+23:45:57.078 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'testDemoJobs'
+23:45:57.079 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'testDemoJobs'
+23:45:57.080 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'testDemoJobs' to allow for resolving potential circular references
+23:45:57.089 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Ignoring bean class loading failure for bean 'spyMemcachedClient'
+org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:354) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.BeanFactoryUtils.beanNamesForTypeIncludingAncestors(BeanFactoryUtils.java:187) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.aop.framework.autoproxy.BeanFactoryAdvisorRetrievalHelper.findAdvisorBeans(BeanFactoryAdvisorRetrievalHelper.java:73) [spring-aop-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findCandidateAdvisors(AbstractAdvisorAutoProxyCreator.java:101) [spring-aop-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.findEligibleAdvisors(AbstractAdvisorAutoProxyCreator.java:87) [spring-aop-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(AbstractAdvisorAutoProxyCreator.java:69) [spring-aop-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.wrapIfNecessary(AbstractAutoProxyCreator.java:376) [spring-aop-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.aop.framework.autoproxy.AbstractAutoProxyCreator.postProcessAfterInitialization(AbstractAutoProxyCreator.java:339) [spring-aop-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsAfterInitialization(AbstractAutowireCapableBeanFactory.java:421) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1558) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:328) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:108) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:632) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:140) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1114) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1017) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:703) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) [spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) [spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 51 common frames omitted
+23:45:57.091 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.092 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.095 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.transaction.config.internalTransactionAdvisor' to allow for resolving potential circular references
+23:45:57.115 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+23:45:57.116 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+23:45:57.145 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0' to allow for resolving potential circular references
+23:45:57.158 [main] DEBUG o.s.a.f.a.BeanFactoryAdvisorRetrievalHelper - Skipping currently created advisor 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.161 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0'
+23:45:57.163 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.170 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'testDemoJobs'
+23:45:57.180 [main] DEBUG org.springframework.beans.BeanUtils - No property editor [java.lang.reflect.MethodEditor] found for type java.lang.reflect.Method according to 'Editor' suffix convention
+23:45:57.182 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.scheduling.support.ScheduledMethodRunnable#0' to allow for resolving potential circular references
+23:45:57.187 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.189 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.scheduling.support.ScheduledMethodRunnable#0'
+23:45:57.190 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.scheduling.config.CronTask#0'
+23:45:57.190 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.scheduling.config.CronTask#0'
+23:45:57.191 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.scheduling.support.ScheduledMethodRunnable#0'
+23:45:57.193 [main] DEBUG org.springframework.beans.BeanUtils - No property editor [org.springframework.scheduling.support.CronTriggerEditor] found for type org.springframework.scheduling.support.CronTrigger according to 'Editor' suffix convention
+23:45:57.197 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.scheduling.config.CronTask#0' to allow for resolving potential circular references
+23:45:57.213 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.217 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.scheduling.config.CronTask#0'
+23:45:57.217 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0'
+23:45:57.217 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0'
+23:45:57.221 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0' to allow for resolving potential circular references
+23:45:57.233 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'myScheduler'
+23:45:57.234 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'myScheduler'
+23:45:57.246 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'myScheduler' to allow for resolving potential circular references
+23:45:57.268 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Invoking afterPropertiesSet() on bean with name 'myScheduler'
+23:45:57.269 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Initializing ExecutorService  'myScheduler'
+23:45:57.275 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.277 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'myScheduler'
+23:45:57.278 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.scheduling.config.CronTask#0'
+23:45:57.295 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Invoking afterPropertiesSet() on bean with name 'org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0'
+23:45:57.295 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.transaction.config.internalTransactionAdvisor'
+23:45:57.297 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0'
+23:45:57.297 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'myScheduler'
+23:45:57.297 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0'
+23:45:57.298 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+23:45:57.298 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+23:45:57.298 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+23:45:57.298 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+23:45:57.299 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating shared instance of singleton bean 'testDemoController'
+23:45:57.299 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'testDemoController'
+23:45:57.316 [main] DEBUG o.s.b.f.annotation.InjectionMetadata - Registered injected element on class [com.palm.lingcai.controller.TestDemoController]: AutowiredFieldElement for private com.palm.lingcai.service.TestDemoService com.palm.lingcai.controller.TestDemoController.testDemoService
+23:45:57.316 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Eagerly caching bean 'testDemoController' to allow for resolving potential circular references
+23:45:57.323 [main] DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected method of bean 'testDemoController': AutowiredFieldElement for private com.palm.lingcai.service.TestDemoService com.palm.lingcai.controller.TestDemoController.testDemoService
+23:45:57.340 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@41c07648: defining beans [org.springframework.scheduling.support.ScheduledMethodRunnable#0,org.springframework.scheduling.config.CronTask#0,org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0,myScheduler,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,ehcacheManager,memcachedClient,spyMemcachedClient,jedisPoolConfig,jedisConnectionFactory,redisTemplate,stringRedisTemplate,cacheManager,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,testDemoController,testDemoJobs,redisListOpsService,redisService,testDemoService,smsSendService,dataSource,pagePlugin,sqlSessionFactory,org.mybatis.spring.mapper.MapperScannerConfigurer#0,transactionManager,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.transaction.annotation.AnnotationTransactionAttributeSource#0,org.springframework.transaction.interceptor.TransactionInterceptor#0,org.springframework.transaction.config.internalTransactionAdvisor,validator,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor,org.springframework.context.annotation.ConfigurationClassPostProcessor.enhancedConfigurationProcessor,testDemoDao]; root of factory hierarchy
+23:45:57.341 [main] DEBUG o.s.b.f.s.DisposableBeanAdapter - Invoking destroy() on bean with name 'org.springframework.scheduling.config.ContextLifecycleScheduledTaskRegistrar#0'
+23:45:57.341 [main] DEBUG o.s.b.f.s.DisposableBeanAdapter - Invoking destroy() on bean with name 'myScheduler'
+23:45:57.342 [main] INFO  o.s.s.c.ThreadPoolTaskScheduler - Shutting down ExecutorService 'myScheduler'
+23:45:57.347 [main] ERROR o.s.web.context.ContextLoader - Context initialization failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'testDemoController': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.palm.lingcai.service.TestDemoService com.palm.lingcai.controller.TestDemoController.testDemoService; nested exception is org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:302) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:298) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:193) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:703) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482) ~[spring-context-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:403) ~[spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306) ~[spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106) [spring-web-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.eclipse.jetty.server.handler.ContextHandler.callContextInitialized(ContextHandler.java:782) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.callContextInitialized(ServletContextHandler.java:424) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.startContext(ContextHandler.java:774) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.servlet.ServletContextHandler.startContext(ServletContextHandler.java:249) [jetty-servlet.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1242) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.ContextHandler.doStart(ContextHandler.java:717) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.webapp.WebAppContext.doStart(WebAppContext.java:494) [jetty-webapp.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.handler.HandlerWrapper.doStart(HandlerWrapper.java:95) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.server.Server.doStart(Server.java:282) [jetty-server.jar:8.1.14.v20131031]
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) [jetty-util.jar:8.1.14.v20131031]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedAdapter.start(JettyEmbeddedAdapter.java:67) [eclipse-jetty-starters-embedded.jar:na]
+	at net.sourceforge.eclipsejetty.starter.common.AbstractJettyLauncherMain.launch(AbstractJettyLauncherMain.java:85) [eclipse-jetty-starters-common.jar:na]
+	at net.sourceforge.eclipsejetty.starter.embedded.JettyEmbeddedLauncherMain.main(JettyEmbeddedLauncherMain.java:42) [eclipse-jetty-starters-embedded.jar:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.palm.lingcai.service.TestDemoService com.palm.lingcai.controller.TestDemoController.testDemoService; nested exception is org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 27 common frames omitted
+Caused by: org.springframework.beans.factory.CannotLoadBeanClassException: Cannot find class [org.springside.modules.cache.memcached.SpyMemcachedClient] for bean with name 'spyMemcachedClient' defined in URL [file:/Users/nzhmac/git/demo.mvc/target/classes/memcache/applicationContext-memcache.xml]; nested exception is java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1325) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.predictBeanType(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isFactoryBean(AbstractBeanFactory.java:1394) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:385) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:362) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.BeanFactoryUtils.beanNamesForTypeIncludingAncestors(BeanFactoryUtils.java:187) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1002) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:858) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 29 common frames omitted
+Caused by: java.lang.ClassNotFoundException: org.springside.modules.cache.memcached.SpyMemcachedClient
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:372) ~[na:1.8.0_25]
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:361) ~[na:1.8.0_25]
+	at java.security.AccessController.doPrivileged(Native Method) ~[na:1.8.0_25]
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:360) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424) ~[na:1.8.0_25]
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308) ~[na:1.8.0_25]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357) ~[na:1.8.0_25]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:430) ~[na:na]
+	at org.eclipse.jetty.webapp.WebAppClassLoader.loadClass(WebAppClassLoader.java:383) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:247) ~[spring-core-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanDefinition.resolveBeanClass(AbstractBeanDefinition.java:395) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doResolveBeanClass(AbstractBeanFactory.java:1346) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveBeanClass(AbstractBeanFactory.java:1317) ~[spring-beans-4.0.6.RELEASE.jar:4.0.6.RELEASE]
+	... 38 common frames omitted

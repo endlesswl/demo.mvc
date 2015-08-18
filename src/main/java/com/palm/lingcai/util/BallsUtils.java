@@ -3,12 +3,9 @@ package com.palm.lingcai.util;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.palm.commom.entityenum.GameEnum;
 
 /**
  * 球
@@ -209,24 +206,6 @@ public class BallsUtils {
 		} catch (Exception e) {
 			return ball;
 		}
-	}
-	
-	/**
-	 * 根据gameId生成对应的球号
-	 * @param gameId
-	 * @return
-	 */
-	public static String randomByGameId(String gameId) {
-		if (gameId.equals(GameEnum.SSQ_GAME.getGameId())) {
-			return randomSSQ();
-		}
-		if (gameId.equals(GameEnum.DLT_GAME.getGameId())) {
-			return randomDLT();
-		}
-		if (gameId.equals(GameEnum.QXC_GAME.getGameId())) {
-			return randomQXC();
-		}
-		return null;
 	}
 	
 	/**

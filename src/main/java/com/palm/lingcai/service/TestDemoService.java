@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springside.modules.cache.memcached.SpyMemcachedClient;
+//import org.springside.modules.cache.memcached.SpyMemcachedClient;
 
 import com.palm.lingcai.dao.TestDemoDao;
 import com.palm.lingcai.dao.page.Page;
@@ -21,8 +21,8 @@ import com.palm.lingcai.service.redis.RedisListOpsService;
 @Transactional
 public class TestDemoService {
 
-	@Autowired
-	private SpyMemcachedClient spymemcachedClient;
+//	@Autowired
+//	private SpyMemcachedClient spymemcachedClient;
 
 	@Autowired
 	private TestDemoMemcachedClient memcachedClient;
@@ -77,8 +77,8 @@ public class TestDemoService {
 	}
 
 	public void aboutMem() {
-		TestDemo testDemo = spymemcachedClient.get("getMemcacheLottery");
-		spymemcachedClient.safeSet("getMemcache", 60 * 60 * 24 * 30, testDemo);
+//		TestDemo testDemo = spymemcachedClient.get("getMemcacheLottery");
+//		spymemcachedClient.safeSet("getMemcache", 60 * 60 * 24 * 30, testDemo);
 	}
 
 	public void aboutRedis() {
